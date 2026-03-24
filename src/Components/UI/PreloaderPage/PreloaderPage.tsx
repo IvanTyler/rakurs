@@ -20,7 +20,9 @@ export const PreloaderPage: FC = () => {
     const [isContentLoaded, setIsContentLoaded] = useState(false);
     const [isContentHide, setIsContentHide] = useState(true);
 
-    if (counter < 100) document.body.style.overflow = 'hidden';
+    if (typeof window !== 'undefined') {
+        if (counter < 100) document.body.style.overflow = 'hidden';
+    }
 
     useEffect(() => {
         // Проверяем текущее состояние загрузки
