@@ -17,10 +17,10 @@ export const PreloaderPage: FC = () => {
     const pathRef = useRef<SVGPathElement>(null);
     const [pathLength, setPathLength] = useState(0);
 
-
     const [isContentLoaded, setIsContentLoaded] = useState(false);
     const [isContentHide, setIsContentHide] = useState(true);
 
+    if (counter < 100) document.body.style.overflow = 'hidden';
 
     useEffect(() => {
         // Проверяем текущее состояние загрузки
@@ -53,17 +53,24 @@ export const PreloaderPage: FC = () => {
     }, [counter, isContentLoaded]);
 
     useEffect(() => {
+
         if (counter === 100) {
+
             const timer = setTimeout(() => {
                 setIsContentHide(false);
+                document.body.style.overflow = '';
             }, 1100);
 
-            return () => clearTimeout(timer);
+            return () => {
+                clearTimeout(timer);
+                document.body.style.overflow = ''; // очистка на всякий случай
+            };
         }
     }, [counter]);
 
     const progressLoad = () => {
         if (!isContentLoaded) return
+
         if (counter < 0 || counter >= 100) return;
 
         let delay = 80;
