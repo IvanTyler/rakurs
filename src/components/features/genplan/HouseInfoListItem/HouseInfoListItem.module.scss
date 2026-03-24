@@ -1,0 +1,30 @@
+.houseInfoListItem {
+  display: grid;
+  grid-template-areas:
+      'rooms price'
+      'countApartments countApartments';
+  grid-template-columns: 1fr auto;
+  gap: 0 15px;
+
+  &__rooms,
+  &__price,
+  &__countApartments {
+    font-weight: 400;
+    font-size: clamp(10px, 1vw, 14px);
+    line-height: clamp(12px, 1vw, 16px);
+  }
+
+  &__headline {
+    grid-area: rooms;
+  }
+
+  &__countApartments {
+    grid-area: countApartments;
+    opacity: 0.5;
+  }
+
+  &__price {
+    justify-self: end;
+    grid-area: price;
+  }
+}

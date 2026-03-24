@@ -1,0 +1,141 @@
+.rakursConcept {
+
+  .rakursConceptContainer {
+    display: grid;
+    grid-template-columns: clamp(300px, 50vw, 927px) 1fr 1fr;
+    grid-template-areas:
+      'title desc_1 desc_2'
+      'contentMediaImages contentMediaImages contentMediaImages'
+      'contentTabs descSection link';
+    gap: 12px;
+
+    @media (max-width: 970px) {
+      grid-template-columns: clamp(300px, 50vw, 927px) 1fr clamp(0px, 29vw, 277px);
+      grid-template-areas:
+      'title desc_1'
+      'title desc_2'
+      'contentMediaImages contentMediaImages'
+      'contentTabs descSection'
+      'contentTabs link';
+    }
+
+    @media (max-width: 580px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      'title'
+      'desc_1'
+      'desc_2'
+      'contentTabs'
+      'link';
+    }
+  }
+
+  .desc,
+  .title {
+    color: var(--black);
+  }
+
+  .title {
+    grid-area: title;
+    max-width: 420px;
+
+    @media (max-width: 1220px) {
+      max-width: 260px;
+    }
+
+    @media (max-width: 580px) {
+      max-width: 280px;
+    }
+
+  }
+
+  .text_1 {
+    margin-left: clamp(51px, 13vw, 239px);
+  }
+
+
+  .desc {
+    max-width: 440px;
+    font-weight: 400;
+    font-size: clamp(12px, 1.5vw, 18px);
+    line-height: clamp(14px, 1.5vw, 20px);
+  }
+
+  .desc.desc_1 {
+    grid-area: desc_1;
+
+    @media (max-width: 970px) {
+      grid-column: 2 / span 3;
+    }
+    @media (max-width: 580px) {
+      grid-column: 1 / span 1;
+      justify-self: center;
+      margin-left: clamp(51px, 10vw, 239px);
+    }
+  }
+
+  .desc.desc_2 {
+    grid-area: desc_2;
+    @media (max-width: 970px) {
+      grid-column: 2 / span 3;
+    }
+    @media (max-width: 580px) {
+      grid-column: 1 / span 1;
+      justify-self: center;
+      margin-left: clamp(51px, 10vw, 239px);
+    }
+  }
+
+  .district {
+    background-color: var(--gray);
+
+    figure:nth-child(2) {
+      align-self: end;
+    }
+
+    figure:nth-child(3) img {
+      height: 100%;
+    }
+  }
+
+  .architecture {
+    background-color: var(--brown_light);
+
+    figure:nth-child(2) img {
+      height: 100%;
+    }
+
+    figure:last-child {
+      align-self: end;
+    }
+  }
+
+  .education {
+    background-color: var(--green-light);
+
+    figure:nth-child(2) {
+      align-self: end;
+    }
+
+    figure:first-child img {
+      height: 100%;
+    }
+  }
+
+  .knowledge_hub {
+    background-color: var(--brown);
+
+    figure:last-child {
+      align-self: end;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    figure:nth-child(2) img {
+      height: 100%;
+    }
+  }
+
+}

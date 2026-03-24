@@ -1,0 +1,1 @@
+export const AppToken = "e66a54282eb3dfcb12383577c08fe6c4";

@@ -1,0 +1,36 @@
+.input {
+  width: 100%;
+  border-bottom: 1px solid var(--green-light);
+  padding-top: clamp(28px, 1vw, 32px);
+  padding-bottom: clamp(12px, 2vw, 24px);
+  font-weight: 400;
+  font-size: clamp(10px, 1vw, 14px);
+  line-height: clamp(12px, 1vw, 16px);
+  color: var(--green-light);
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    // Прозрачный фон вместо желтого/голубого
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+    // Сохраняем цвет текста
+    -webkit-text-fill-color: var(--green-light) !important;
+    // Ускоряем переход
+    transition: background-color 5000s ease-in-out 0s !important;
+  }
+
+  // Для современных браузеров
+  &:autofill {
+    background-color: transparent !important;
+    box-shadow: 0 0 0 1000px transparent inset !important;
+  }
+
+  &::placeholder {
+    font-weight: 400;
+    font-size: clamp(10px, 1vw, 14px);
+    line-height: clamp(12px, 1vw, 16px);
+    color: var(--green-light);
+  }
+}

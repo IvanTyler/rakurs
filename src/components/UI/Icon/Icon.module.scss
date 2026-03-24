@@ -1,0 +1,23 @@
+.icon {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  font-size: 16px;
+  background-color: #000;
+}
+
+.icon.man {
+  mask-image: url("/icons/man.svg");
+}
+.icon.car {
+  mask-image: url("/icons/car.svg");
+}
+.icon.check {
+  mask-image: url("/icons/check.svg");
+}

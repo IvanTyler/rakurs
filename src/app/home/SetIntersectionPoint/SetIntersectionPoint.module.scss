@@ -1,0 +1,32 @@
+.setIntersectionPoint {
+  background-color: var(--black);
+
+  .containerSetIntersectionPoint {
+    display: grid;
+    grid-template-areas:
+      'title form';
+    gap: 32px;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: clamp(90px, 11vw, 200px);
+
+    @media (max-width: 630px) {
+      grid-template-areas:
+      'title'
+      'form';
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__title {
+    grid-area: title;
+    color:var(--green-light);
+    font-size: clamp(28px, 4vw, 72px);
+    line-height: clamp(30px, 3vw, 72px);
+
+  }
+
+  &__form {
+    grid-area: form;
+    max-width: 704px;
+  }
+}

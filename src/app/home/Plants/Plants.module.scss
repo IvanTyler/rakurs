@@ -1,0 +1,67 @@
+.plants,
+.sliderMobile {
+  display: flex;
+  gap: clamp(4px, 5vw, 58px);
+  margin-top: clamp(23px, 3vw, 64px);
+  mix-blend-mode: multiply;
+
+  &__img {
+    height: clamp(122px, 11vw, 208px);
+    //width: clamp(106px, 8vw, 139px);
+    object-fit: cover;
+
+    @media (max-width: 450px) {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(8px, 1vw, 12px);
+  }
+
+  &__figcaption {
+    font-weight: 400;
+    font-size: clamp(10px, 1vw, 14px);
+    line-height: clamp(12px, 1vw, 16px);
+  }
+}
+
+.sliderMobile {
+  overflow: initial;
+}
+
+.sliderMobile {
+  :global(.swiper-pagination) {
+    position: absolute !important;
+    top: -40px !important;
+    right: 0 !important;
+    left: auto !important;
+    width: auto !important;
+    text-align: right !important;
+    z-index: 10 !important;
+
+    :global(.swiper-pagination-bullet) {
+      border: solid 1px var(--lightBlack);
+      border-radius: 0;
+      background-color: transparent !important;
+      opacity: 1 !important;
+      width: 6px !important;
+      height: 6px !important;
+      margin: 0 3px !important;
+
+
+      &:global(.swiper-pagination-bullet-active) {
+        background-color: var(--lightBlack) !important;
+      }
+
+    }
+
+  }
+}

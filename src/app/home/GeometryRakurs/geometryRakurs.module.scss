@@ -1,0 +1,219 @@
+.geometryRakurs {
+  .containerGeometryRakurs {
+    display: grid;
+    grid-template-columns: clamp(280px, 25vw, 465px) 1fr;
+    grid-template-areas:
+      'title sun images'
+      'title sun images'
+      'sunlightDescription sun images';
+    gap: 9px;
+
+    @media (max-width: 900px) {
+      grid-template-columns: clamp(182px, 26vw, 228px) 1fr 1fr;
+      grid-template-areas:
+      'title title title'
+      'sun sun sun'
+      'images images images'
+      'sunlightDescription sunlightDescription sunlightDescription';
+    }
+
+    @media (max-width: 670px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      'title'
+      'images'
+      'sun'
+      'sunlightDescription';
+    }
+
+  }
+
+  &__title {
+    grid-area: title;
+    max-width: 460px;
+    justify-self: start;
+    font-weight: 400;
+    font-size: clamp(10px, 1.6vw, 18px);
+    line-height: clamp(12px, 1.7vw, 20px);
+    color: var(--black);
+
+    @media (max-width: 900px) {
+      max-width: 372px;
+    }
+  }
+
+
+  &__sun {
+    grid-area: sun;
+    margin-top: 161px;
+    justify-self: end;
+    align-self: start;
+    width: clamp(64px, 8vw, 142px);
+    height: clamp(64px, 8vw, 142px);
+    margin-right: -80px;
+
+    @media (max-width: 1100px) {
+      transform: translateX(-130px);
+    }
+
+    @media (max-width: 900px) {
+      grid-column: 1;
+      grid-row: 3;
+      justify-self: center;
+      transform: translateX(0px);
+      margin-right: 0;
+      margin-top: clamp(50px, 11.5vw, 100px);
+    }
+
+    @media (max-width: 670px) {
+      margin-top: 40px;
+      justify-self: end;
+      margin-right: 30px;
+      grid-row: 4;
+    }
+  }
+
+  .geometryRakursImages {
+    grid-area: images;
+    justify-self: end;
+    display: flex;
+    gap: clamp(8px, 1vw, 12px);
+    max-width: 1164px;
+
+    @media (max-width: 900px) {
+      display: grid;
+      grid-template-columns: clamp(182px, 26vw, 228px) 1fr 1fr;
+      margin-top: clamp(20px, 5vw, 40px);
+    }
+
+    @media (max-width: 580px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__item {
+      display: grid;
+
+      &:first-child {
+
+        @media (max-width: 580px) {
+          grid-column: 1 / span 2;
+        }
+
+        figure {
+          align-self: end;
+          grid-column: 1 / span 2;
+
+          img {
+            @media (max-width: 580px) {
+              height: clamp(238px, 55vw, 320px);
+            }
+          }
+
+        }
+      }
+
+      &:last-child {
+        figure {
+          align-self: start;
+          grid-column: 1 / span 2;
+        }
+
+        a {
+          align-self: end;
+          margin-bottom: 24px;
+        }
+
+      }
+    }
+
+    &__figure {
+      display: grid;
+      gap: clamp(8px, 1vw, 12px);
+    }
+
+    &__img {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__text {
+      font-weight: 400;
+      font-size: clamp(10px, 1vw, 12px);
+      line-height: clamp(12px, 1vw, 14px);
+    }
+
+  }
+
+  &__sunlightDescription {
+    position: relative;
+    display: grid;
+    align-self: end;
+    grid-area: sunlightDescription;
+    max-width: 465px;
+    height: clamp(150px, 15.51vw, 289px);
+    padding: clamp(8px, 1vw, 12px);
+    margin-bottom: -172px;
+    background-image: url("/images/geometry-rakurs/rectangle.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @media (max-width: 1120px) {
+      height: clamp(130px, 20vw, 174px);
+
+    }
+
+    @media (max-width: 1100px) {
+      margin-bottom: -66px;
+    }
+
+    @media (max-width: 900px) {
+      background-image: url("/images/geometry-rakurs/rectangle-mobile.svg");
+      max-width: 361px;
+      height: clamp(199px, 21vw, 277px);
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 670px) {
+      margin-top: 40px;
+    }
+
+    @media (max-width: 580px) {
+      max-width: 320px;
+      height: clamp(177px, 11vw, 277px);
+    }
+  }
+
+  &__rectangle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__text {
+    align-self: end;
+    font-weight: 400;
+    font-size: clamp(16px, 1.7vw, 32px);
+    line-height: clamp(18px, 1.7vw, 34px);
+  }
+
+  &__link {
+    border: solid 1px var(--black);
+    color: var(--black);
+    grid-area: link;
+    place-self: end;
+
+
+    &::after {
+      border: solid 1px var(--black);
+      border-bottom: #0000;
+      border-left: #0000;
+      align-self: start;
+      width: clamp(8px, 1vw, 16px);
+      height: clamp(8px, 1vw, 16px);
+    }
+  }
+
+}

@@ -1,0 +1,154 @@
+.floorsPlans {
+  transition: background-color var(--transitionTime);
+
+  .containerFloorsPlans {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'desc img'
+      'infoPlan img'
+      'tabs img'
+      'tabs link';
+    gap: 0 clamp(80px, 6vw, 109px);
+    padding-bottom: clamp(80px, 9vw, 174px);
+
+    @media(max-width: 550px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      'desc'
+      'tabs'
+      'link';
+    }
+
+  }
+
+  &__desc {
+    grid-area: desc;
+    grid-row: 1 / span 3;
+    max-width: 440px;
+    font-weight: 400;
+    font-size: clamp(8px, 1vw, 14px);
+    line-height: clamp(10px, 1vw, 16px);
+
+    @media (max-width: 1050px) {
+      max-width: 260px;
+    }
+
+    @media(max-width: 550px) {
+      grid-row: 1;
+    }
+
+    @keyframes imgAnimate {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__wrapperImg {
+    grid-row: 1 / span 3;
+    height: clamp(324px, 43vw, 823px);
+    justify-self: end;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    animation: imgAnimate 0.5s ease;
+  }
+
+  &__infoPlan {
+    grid-area: infoPlan;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 1vw, 24px);
+    margin-top: 90px;
+  }
+
+  &__price {
+    font-weight: 400;
+    font-size: clamp(14px, 1vw, 18px);
+    line-height: clamp(16px, 1vw, 20px);
+  }
+
+  &__sizeRange {
+    font-weight: 400;
+    font-size: clamp(26px, 4vw, 48px);
+    line-height: clamp(26px, 4vw, 48px);
+  }
+
+  &__tabs {
+    grid-area: tabs;
+    width: 100%;
+    max-width: 599px;
+    margin-top: clamp(40px, 6vw, 100px);
+    gap: clamp(12px, 2vw, 16px);
+
+    li {
+
+
+
+      & > div > span {
+        @media (max-width: 550px) {
+          display: block !important;
+        }
+      }
+
+      & > div {
+        @media (max-width: 550px) {
+
+        }
+      }
+
+      & > div {
+        @media (max-width: 550px) {
+
+        }
+      }
+
+      figure img {
+        @media (max-width: 550px) {
+          object-fit: cover !important;
+          height: clamp(301px, 74vw, 400px) !important;
+        }
+      }
+
+    }
+  }
+
+  &__link {
+    grid-area: link;
+    margin-top: clamp(32px, 3vw, 52px);
+    align-self: start;
+    justify-self: end;
+    background-color: var(--lightBlack);
+    color: var(--grey-light);
+    margin-right: clamp(25px, 4vw, 109px);
+
+    @media (max-width: 550px) {
+      justify-self: start;
+      width: 168px;
+    }
+  }
+
+}
+
+
+
+
+.floorsPlans.linear {
+  background-color: var(--gray);
+}
+.floorsPlans.corner {
+  background-color: var(--green-light);
+}
+.floorsPlans.swing {
+  background-color: var(--brown_light);
+}
+.floorsPlans.conclusion {
+  background-color: var(--brown);
+}

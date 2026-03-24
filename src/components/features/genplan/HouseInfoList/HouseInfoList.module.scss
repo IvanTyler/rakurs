@@ -1,0 +1,15 @@
+.houseInfoList {
+  display: grid;
+  gap: clamp(8px, 1vw, 12px);
+  margin-top: clamp(16px, 2vw, 32px);
+}
+
+.houseInfoList.row {
+  grid-template-columns: 1fr;
+}
+
+.houseInfoList.column {
+  @media (max-width: 680px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

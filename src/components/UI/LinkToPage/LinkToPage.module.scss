@@ -1,0 +1,25 @@
+.apartmentSelector {
+  display: grid;
+  grid-template-columns: 1fr 16px;
+  align-items: end;
+  border: solid 1px var(--black);
+  width: clamp(168px, 16vw, 226px);
+  height: clamp(56px, 5vw, 48px);
+  padding: clamp(8px, 1vw, 12px);
+  font-weight: 400;
+  font-family: var(--main-font);
+  font-size: clamp(10px, 1vw, 14px);
+  line-height: clamp(12px, 1vw, 16px);
+
+  &::after {
+    content: '';
+    display: inline-flex;
+    justify-self: end;
+    align-self: end;
+    width: clamp(8px, 1vw, 16px);
+    height: clamp(8px, 1vw, 16px);
+    border: solid 1px var(--grey-light);
+    border-top: solid 1px var(--black);
+    border-left: solid 1px var(--black);
+  }
+}

@@ -1,0 +1,37 @@
+.pointsInterest {
+  position: relative;
+  background-color: var(--green-light);
+
+  .containerPointsInterest {
+    display: grid;
+    grid-template-columns: clamp(156px, 11vw, 200px) 1fr;
+    grid-template-areas:
+      'selection pointsInterest';
+    gap: clamp(18px, 9vw, 154px);
+    padding-top: 58px;
+    padding-bottom: 58px;
+
+    @media (max-width: 810px) {
+      gap: 18px;
+    }
+
+    @media (max-width: 750px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      'selection'
+      'pointsInterest';
+    }
+
+    @media (max-width: 500px) {
+      padding: 8px;
+    }
+
+  }
+
+  &__selection {
+    grid-area: selection;
+    align-self: center;
+  }
+
+
+}

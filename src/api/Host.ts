@@ -1,0 +1,1 @@
+export const Host = 'https://rakurs.moscow/api/v3';

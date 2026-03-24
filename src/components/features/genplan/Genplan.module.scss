@@ -1,0 +1,223 @@
+.genplan {
+  position: relative;
+  width: 100%;
+
+  @media (max-width: 780px) {
+    height: 800px;
+  }
+
+  @media (max-width: 680px) {
+    height: 750px;
+  }
+
+  @media (max-width: 600px) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+  }
+
+  &__wrapperFloorPlan {
+    height: 100%;
+    background: linear-gradient(180deg, #77A5C9 0%, #7FABCE 100%);
+
+    @media (max-width: 600px) {
+      width: 600px;
+      padding-bottom: 12px;
+    }
+  }
+
+  &__scrollbar {
+    scrollbar-width: thin;
+  }
+
+
+  &__img,
+  &__picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__picture {
+    @media (max-width: 780px) {
+      height: calc(100% - 124px);
+      margin-top: auto;
+    }
+
+    @media (max-width: 600px) {
+      width: 600px;
+    }
+  }
+
+  &__picture.noScroll {
+    width: 100%;
+  }
+
+  .containerGenplan {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-areas: 'title link';
+    height: 130px;
+
+    @media (max-width: 600px) {
+      position: sticky;
+      z-index: 11;
+      grid-template-areas:
+        'title'
+        'link';
+      grid-template-rows: 105px 1fr;
+      height: calc(100% - 650px);
+      transform: translateY(-650px);
+    }
+  }
+
+
+  &__title {
+    grid-area: title;
+    height: 50px;
+    z-index: 11;
+    justify-self: start;
+    align-self: start;
+
+    br {
+      @media (max-width: 780px) {
+        display: none;
+      }
+    }
+
+  }
+
+  &__underlined {
+    margin-left: clamp(44px, 11vw, 238px);
+  }
+
+  &__link {
+    z-index: 11;
+    justify-self: end;
+    align-self: start;
+    grid-area: link;
+    background-color: var(--black);
+    color: var(--white);
+
+    @media (max-width: 780px) {
+      margin-top: 100px;
+    }
+
+    @media (max-width: 600px) {
+      margin-top: 0;
+    }
+  }
+
+  &__backToCorps {
+    position: absolute;
+    top: clamp(76px, 9vw, 160px);
+    left: 15px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 400;
+    font-size: clamp(8px, 1.5vw, 12px);
+    line-height: clamp(8px, 1.5vw, 14px);
+    color: var(--black);
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      display: inline-flex;
+      width: 12px;
+      height: 12px;
+      border: solid 1px var(--black);
+      border-top: solid 1px transparent;
+      border-right: solid 1px transparent;
+      transform: rotate(45deg);
+      transition: all var(--transitionTime);
+    }
+
+    &:hover::before {
+      transform: rotate(45deg) translate(-2px, 2px);
+    }
+
+  }
+
+  &__numberCorps {
+    position: absolute;
+    width: clamp(32px, 4vw, 64px);
+    height: clamp(32px, 4vw, 64px);
+    background-color: var(--grey-light);
+    padding: 4px;
+
+    @media (max-width: 780px) {
+      width: clamp(36px, 6vw, 64px);
+      height: clamp(36px, 6vw, 64px);
+    }
+
+    span {
+      align-self: start;
+    }
+
+    &:first-of-type {
+      left: 30.3% !important;
+      top: 47% !important;
+
+      @media (max-width: 780px) {
+        left: 9% !important;
+        top: 54% !important;
+      }
+
+      @media (max-width: 600px) {
+        top: 400px !important;
+        left: 55px !important;
+      }
+    }
+
+    &:nth-of-type(2) {
+      top: 24% !important;
+      left: 51% !important;
+
+      @media (max-width: 780px) {
+        top: 31.5% !important;
+        left: 44% !important;
+      }
+
+      @media (max-width: 600px) {
+        top: 240px !important;
+        left: 265px !important;
+      }
+
+    }
+
+    &:nth-of-type(3) {
+      top: 64% !important;
+      left: 67.2% !important;
+
+      @media (max-width: 780px) {
+        top: 68% !important;
+        left: 71.5% !important;
+      }
+
+      @media (max-width: 600px) {
+        top: 505px !important;
+        left: 428px !important;
+      }
+    }
+
+  }
+
+  &__numberCorps.opacity {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+}
+
+
+

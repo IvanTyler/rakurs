@@ -1,0 +1,39 @@
+@import '../assets/fonts/suisse-Intl/suisse-Intl.scss';
+@import '../../src/style/variables.scss';
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--main-font), Arial, Helvetica, sans-serif;
+  background-color: var(--gray);
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+:root {
+  --main-font: 'Suisse Intl';
+  --transitionTime: .3s;
+
+  --white: #fff;
+
+  --lightBlack: #242424;
+
+  --gray: #EBEBEB;
+  --grey-light: #F9F9F9;
+
+  --brown: #B86C46;
+  --brown_light: #CFB18A;
+  --green-light: #CCC8AA;
+
+  --black: #242424;
+
+
+  --red-light: #E84E0F;
+}
+
+

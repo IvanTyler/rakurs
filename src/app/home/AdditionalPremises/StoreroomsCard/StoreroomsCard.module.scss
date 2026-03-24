@@ -1,0 +1,54 @@
+.storeroomsCard {
+  grid-area: storerooms;
+  color: var(--black);
+
+  &__picture,
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__figure {
+    display: grid;
+    gap: clamp(8px, 1vw, 12px);
+  }
+
+  &__count,
+  &__title, {
+    font-weight: 400;
+    font-size: clamp(16px, 2vw, 32px);
+    line-height: clamp(16px, 2vw, 30px);
+  }
+
+  &__figcaption {
+    display: inline-flex;
+    gap: 5px;
+  }
+
+  &__desc {
+    margin-top: clamp(8px, 1vw, 11px);
+    font-weight: 400;
+    font-size: clamp(10px, 1vw, 14px);
+    line-height: clamp(12px, 1vw, 16px);
+  }
+
+  &__link {
+    margin-top: clamp(24px, 3vw, 54px);
+    color: var(--black);
+
+    @media (max-width: 600px) {
+      width: 168px;
+      height: 44px;
+    }
+
+    &::after {
+      align-self: start;
+      border: solid 1px var(--black);
+      border-top: solid 1px var(--black);
+      border-right: solid 1px var(--black);
+      border-left: solid 1px transparent;
+      border-bottom: solid 1px transparent;
+    }
+  }
+
+}

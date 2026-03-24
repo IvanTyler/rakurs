@@ -1,0 +1,6 @@
+.tabsAccordion {
+  grid-area: tabsAccordion;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 3vw, 32px);
+}

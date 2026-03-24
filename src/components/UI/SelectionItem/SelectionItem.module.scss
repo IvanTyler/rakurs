@@ -1,0 +1,116 @@
+.selectionItem {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px var(--black);
+  max-width: clamp(156px, 11vw, 200px);
+  overflow: hidden;
+
+  @media (max-width: 500px) {
+    max-width: 100%;
+    border: solid 1px transparent;
+  }
+
+  &__wrapper {
+
+    @media (max-width: 500px) {
+      border: solid 1px var(--black);
+      transform: translateY(0);
+      transition: transform var(--transitionTime);
+    }
+  }
+
+  &__wrapper.open {
+    transform: translateY(-100%);
+  }
+
+  &__wrapperSelectItem {
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 500px) {
+      overflow: hidden;
+    }
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 1fr clamp(12px, 1vw, 16px);
+    grid-template-areas:
+      'title selected';
+    gap: 8px;
+    padding: clamp(8px, 3vw, 28px) clamp(8px, 1vw, 12px) clamp(8px, 1vw, 12px) clamp(8px, 1vw, 12px);
+    color: var(--black);
+    background-color: transparent;
+    transition: background-color var(--transitionTime), color var(--transitionTime);
+    border-top: solid 1px var(--black);
+    border-bottom: solid 1px var(--black);
+    cursor: pointer;
+
+    &:first-child,
+    &:last-child {
+      border-bottom: solid 1px transparent;
+      border-top: solid 1px transparent;
+    }
+
+    @media (max-width: 500px) {
+      background-color: var(--white);
+    }
+
+  }
+
+  &__toggle {
+    position: absolute;
+    top: calc(50% - 6px);
+    right: 10px;
+    width: 12px;
+    height: 12px;
+    border-top: solid 1px var(--grey-light);
+    border-left: solid 1px var(--grey-light);
+    transform: rotate(45deg);
+    transition: transform var(--transitionTime);
+    cursor: pointer;
+  }
+
+  &__toggle.open {
+    transform: rotate(224deg);
+  }
+
+  &__title {
+    grid-area: title;
+    font-weight: 400;
+    font-size: clamp(10px, 1vw, 14px);
+    line-height: clamp(12px, 1vw, 16px);
+  }
+
+  &__selected {
+    grid-area: selected;
+    justify-self: end;
+    background-color: var(--white);
+    width: clamp(12px, 1vw, 16px);
+    height: clamp(12px, 1vw, 16px);
+    transition: background-color var(--transitionTime);
+
+    i {
+      transition: background-color var(--transitionTime);
+      width: 100%;
+    }
+  }
+
+  &__floor,
+  &__footage {
+    font-weight: 400;
+    font-size: clamp(10px, 1vw, 14px);
+    line-height: clamp(12px, 1vw, 16px);
+  }
+
+  &__item.selected {
+    color: var(--grey-light);
+    background-color: var(--black);
+  }
+}
+
+.selectionItem.open {
+  z-index: 8;
+}

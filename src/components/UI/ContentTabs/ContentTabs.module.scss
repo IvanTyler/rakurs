@@ -1,0 +1,7 @@
+.contentTabs {
+  grid-area: contentTabs;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: clamp(12px, 3vw, 24px);
+}

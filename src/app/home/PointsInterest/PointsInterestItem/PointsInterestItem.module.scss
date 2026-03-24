@@ -1,0 +1,259 @@
+.pointsInterestItem {
+  position: relative;
+  grid-area: pointsInterest;
+  align-self: center;
+  width: clamp(540px, 62vw, 1180px);
+  background-color: var(--green-light);
+  scrollbar-width: thin;
+
+  @media (max-width: 750px) {
+    justify-self: center;
+  }
+
+  @media (max-width: 580px) {
+    width: clamp(440px, 62vw, 1180px);
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+    height: 500px;
+    overflow-y: hidden;
+  }
+
+
+  &__tooltip {
+    position: absolute;
+    width: initial !important;
+    max-width: 260px;
+  }
+
+  @keyframes imgAnimate {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: imgAnimate 0.5s ease;
+    -webkit-animation: imgAnimate 0.5s ease;
+
+    @media (max-width: 500px) {
+      width: initial;
+    }
+  }
+
+  .apartment_1 {
+    &:first-of-type {
+      top: 10%;
+      left: 18%;
+
+      @media (max-width: 500px) {
+        top: 8%;
+        left: 25%;
+      }
+
+    }
+
+    &:nth-of-type(2) {
+      top: 33%;
+      left: 13%;
+
+      @media (max-width: 500px) {
+        left: 18%;
+      }
+
+    }
+
+    &:nth-of-type(3) {
+      top: 59%;
+      left: 30%;
+
+      @media (max-width: 500px) {
+        top: 58%;
+        left: 43%;
+      }
+    }
+
+    &:nth-of-type(4) {
+      top: 78%;
+      left: 47%;
+
+
+      @media (max-width: 500px) {
+        top: 78%;
+        left: 67%;
+      }
+    }
+
+    &:nth-of-type(5) {
+      top: 62%;
+      left: 55%;
+
+      @media (max-width: 500px) {
+        top: 61%;
+        left: 78%;
+      }
+    }
+
+    &:nth-of-type(6) {
+      top: 47%;
+      left: 52%;
+
+      @media (max-width: 500px) {
+        top: 46%;
+        left: 73%;
+      }
+    }
+
+    &:nth-of-type(7) {
+      top: 26%;
+      left: 41%;
+
+      @media (max-width: 500px) {
+        top: 24%;
+        left: 58%;
+      }
+    }
+
+    &:nth-of-type(8) {
+      top: 29%;
+      left: 56%;
+
+      @media (max-width: 500px) {
+        top: 28%;
+        left: 81%;
+      }
+    }
+
+    &:nth-of-type(9) {
+      top: 25%;
+      left: 70%;
+
+      @media (max-width: 500px) {
+        top: 23%;
+        left: 100%;
+      }
+    }
+
+    &:nth-of-type(10) {
+      top: 43%;
+      left: 72%;
+
+      @media (max-width: 500px) {
+        left: 101%;
+      }
+    }
+
+    &:last-of-type {
+      top: 61%;
+      left: 72%;
+
+      @media (max-width: 500px) {
+        left: 104%;
+      }
+    }
+  }
+
+  .apartment_2 {
+    &:first-of-type {
+      top: 10%;
+      left: 18%;
+
+      //@media (max-width: 1100px) {
+      //  left: 5%;
+      //}
+      //
+      //@media (max-width: 600px) {
+      //  top: 490px;
+      //  left: 215px;
+      //}
+
+    }
+
+    &:nth-of-type(2) {
+      top: 33%;
+      left: 13%;
+
+      //@media (max-width: 1100px) {
+      //  top: 40%;
+      //  left: 30%;
+      //}
+      //
+      //@media (max-width: 600px) {
+      //  top: 270px;
+      //  left: 340px;
+      //}
+
+    }
+
+    &:nth-of-type(3) {
+      top: 59%;
+      left: 30%;
+
+      //@media (max-width: 1100px) {
+      //  top: 100px;
+      //  left: 41%;
+      //}
+      //
+      //@media (max-width: 600px) {
+      //  left: 600px;
+      //}
+    }
+
+    &:nth-of-type(4) {
+      top: 78%;
+      left: 47%;
+
+      //@media (max-width: 1100px) {
+      //  left: 40%;
+      //}
+      //
+      //@media (max-width: 600px) {
+      //  top: 300px;
+      //  left: 600px;
+      //}
+    }
+
+    &:nth-of-type(5) {
+      top: 62%;
+      left: 55%;
+    }
+
+    &:nth-of-type(6) {
+      top: 47%;
+      left: 52%;
+    }
+
+    &:nth-of-type(7) {
+      top: 26%;
+      left: 41%;
+    }
+
+    &:nth-of-type(8) {
+      top: 29%;
+      left: 56%;
+    }
+
+    &:nth-of-type(9) {
+      top: 25%;
+      left: 70%;
+    }
+
+    &:nth-of-type(10) {
+      top: 43%;
+      left: 72%;
+    }
+
+    &:last-of-type {
+      top: 61%;
+      left: 72%;
+    }
+  }
+
+}

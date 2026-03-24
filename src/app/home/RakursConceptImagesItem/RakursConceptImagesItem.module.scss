@@ -1,0 +1,50 @@
+.rakursConceptImagesItem {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1vw, 12px);
+
+  // Анимация скрытия
+  &.hiding {
+    animation: hideAnimation 2s ease;
+    -webkit-animation: hideAnimation 2s ease;
+  }
+
+
+  &.showing {
+    animation:
+      showAnimation 1.5s ease;
+    -webkit-animation: showAnimation 1.5s ease;
+  }
+
+  @keyframes hideAnimation {
+    0% {
+      clip-path: inset(0 0 0 0);
+    }
+    100% {
+      clip-path: inset(0 100% 0 0);
+    }
+  }
+
+  @keyframes showAnimation {
+    0% {
+      clip-path: inset(0 100% 0 0);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+
+  &__img {
+    width: 100%;
+  }
+
+  &__label {
+    font-family: var(--main-font);
+    font-weight: 400;
+    font-size: clamp(10px, 1vw, 14px);
+    line-height: clamp(12px, 1vw, 16px);
+    color: var(--black);
+  }
+
+}

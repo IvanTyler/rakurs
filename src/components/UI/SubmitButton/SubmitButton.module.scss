@@ -1,0 +1,30 @@
+.submitButton {
+  border: solid 1px var(--black);
+  background-color: var(--green-light);
+  color: var(--black);
+  width: clamp(168px, 18vw, 226px);
+  height: clamp(44px, 5vw, 64px);
+  font-weight: 400;
+  font-family: var(--main-font);
+  align-items: end;
+  padding: clamp(8px, 1vw, 12px);
+  font-size: clamp(10px, 1vw, 14px);
+  line-height: clamp(12px, 1vw, 16px);
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: inline-flex;
+    justify-self: end;
+    align-self: end;
+    width: clamp(8px, 1vw, 16px);
+    height: clamp(8px, 1vw, 16px);
+    min-width: 8px;
+    min-height: 8px;
+    border: solid 1px var(--black);
+    border-top: solid 1px transparent;
+    border-left: solid 1px transparent;
+  }
+}

@@ -1,0 +1,156 @@
+.kindergarten {
+  position: relative;
+  z-index: 1;
+  margin-top: -144px;
+
+  @media (max-width: 800px) {
+    margin-top: 0;
+  }
+
+  .containerKindergarten {
+    grid-template-columns: 1fr clamp(277px, 40vw, 707px);
+    grid-template-areas:
+      'title title'
+      'desc desc'
+      'titleTabs contentMediaImages'
+      'contentTabs contentMediaImages'
+      'descSection descSection';
+    gap: 15px;
+
+    @media (max-width: 710px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+      'title title'
+      'desc desc'
+      'contentMediaImages contentMediaImages'
+      'titleTabs descSection'
+      'contentTabs contentTabs';
+    }
+
+    @media (max-width: 580px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      'title'
+      'desc'
+      'titleTabs'
+      'contentTabs';
+    }
+  }
+
+  &__underlined {
+    margin-left: clamp(44px, 11vw, 238px);
+  }
+
+  &__title {
+    grid-area: title;
+
+    & > br {
+      @media (max-width: 710px) {
+        display: none;
+      }
+    }
+
+  }
+
+  &__titleTabs {
+    grid-area: titleTabs;
+    font-weight: 400;
+    font-size: clamp(20px, 3vw, 40px);
+    line-height: clamp(20px, 3vw, 36px);
+  }
+
+  &__images {
+    margin-top: 0;
+    margin-bottom: clamp(32px, 5vw, 64px);
+
+    @media (max-width: 970px) {
+      grid-column: 2;
+    }
+
+    @media (max-width: 710px) {
+      grid-column: 1 / span 2;
+      height: 100%;
+    }
+  }
+
+  &__desc {
+    margin-top: clamp(9px, 1vw, 13px);
+    margin-bottom: clamp(40px, 8vw, 140px);
+    grid-area: desc;
+    grid-column: 2;
+    max-width: 400px;
+
+    @media (max-width: 710px) {
+      grid-column: 1 / span 2;
+      margin-left: clamp(44px, 11vw, 238px);
+    }
+
+    @media (max-width: 580px) {
+      grid-column: 1;
+    }
+
+  }
+
+  &__descSection {
+    grid-column: 2;
+    max-width: 410px;
+    height: 50px;
+  }
+
+  &__contentTabs {
+    grid-area: contentTabs;
+    margin-top: clamp(16px, 3vw, 40px);
+    width: clamp(372px, 44vw, 768px) !important;
+    gap: 0;
+
+    @media (max-width: 850px) {
+      width: clamp(300px, 39vw, 768px) !important;
+    }
+
+    @media (max-width: 710px) {
+      width: clamp(372px, 44vw, 768px) !important;
+    }
+
+    @media (max-width: 580px) {
+      grid-column: 1;
+      width: 100% !important;
+    }
+
+    & > li {
+      padding-bottom: clamp(8px, 1vw, 16px);
+
+      span:last-child {
+
+        @media (max-width: 1700px) {
+          font-size: clamp(16px, 2vw, 20px);
+          line-height: clamp(18px, 2vw, 22px);
+        }
+
+        @media (max-width: 850px) {
+          font-size: clamp(13px, 1vw, 18px);
+          line-height: clamp(16px, 1vw, 20px);
+        }
+
+      }
+    }
+  }
+
+  .stafy,
+  .сlassroom_equipment {
+    background-color: var(--gray);
+  }
+
+  .spaces,
+  .premises_different_ages {
+    background-color: var(--green-light);
+  }
+
+  .educational_process {
+    background-color: var(--brown_light);
+  }
+
+  .сonvenient_logistics {
+    background-color: var(--brown);
+  }
+}
+

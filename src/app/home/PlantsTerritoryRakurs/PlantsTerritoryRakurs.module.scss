@@ -1,0 +1,76 @@
+.plantsTerritoryRakurs {
+  background-color: var(--green-light);
+
+  .containerPlantsTerritoryRakurs {
+    display: grid;
+    grid-template-areas:
+      'title tabsAccordion'
+      'subTitle tabsAccordion';
+    grid-template-rows: clamp(50px, 6vw, 110px);
+    padding-top: clamp(90px, 11vw, 200px);
+    padding-bottom: clamp(90px, 11vw, 200px);
+
+    @media (max-width: 800px) {
+      grid-template-rows: initial;
+      grid-template-areas:
+      'title'
+      'subTitle'
+      'tabsAccordion';
+      max-width: 600px;
+      margin-right: 0;
+    }
+
+  }
+
+  &__title {
+    grid-area: title;
+    justify-self: start;
+    font-weight: 400;
+    font-size: clamp(20px, 2vw, 40px);
+    line-height: clamp(20px, 2vw, 36px);
+    color: var(--black);
+
+
+    & > br {
+      @media (max-width: 800px) {
+        display: none;
+      }
+    }
+
+
+  }
+
+  &__subTitle {
+    grid-area: subTitle;
+    justify-self: start;
+    margin-top: clamp(8px, 5vw, 40px);
+    font-weight: 400;
+    font-size: clamp(14px, 1vw, 18px);
+    line-height: clamp(16px, 1vw, 20px);
+    color: var(--black);
+
+    @media (max-width: 800px) {
+      margin-top: clamp(8px, 1vw, 12px);
+    }
+
+    & > br {
+      @media (max-width: 800px) {
+        display: none;
+      }
+    }
+  }
+
+  .accordion {
+    justify-self: end;
+    max-width: 1150px;
+    height: clamp(500px, 42vw, 790px);
+    margin-left: 40px;
+
+    @media (max-width: 800px) {
+      margin-left: 0;
+      margin-top: 32px;
+    }
+
+  }
+
+}

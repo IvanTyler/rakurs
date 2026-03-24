@@ -1,0 +1,254 @@
+.apartmentsFromStudios {
+  .containerApartmentsFromStudios {
+    position: relative;
+    display: grid;
+    padding-bottom: clamp(90px, 11vw, 200px);
+
+    @media (max-width: 770px) {
+      padding: 0;
+    }
+  }
+
+  &__title {
+    position: relative;
+
+    @media (max-width: 770px) {
+      display: none;
+    }
+  }
+
+  &__undelined {
+    margin-left: clamp(44px, 11vw, 238px);
+  }
+
+  &__picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @media (max-width: 770px) {
+      display: none;
+    }
+  }
+
+  &__picture,
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img {
+    object-fit: cover;
+  }
+
+  .apartmentsFromStudiosList {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-self: center;
+    gap: 8px;
+    max-width: 1414px;
+    margin-top: clamp(60px, 7vw, 126px);
+
+    @media (max-width: 770px) {
+      grid-template-columns: 1fr;
+      gap: 0;
+      margin-top: 0;
+    }
+
+    .accordion {
+      gap: 0;
+      height: clamp(350px, 21vw, 380px);
+
+      @media (max-width: 550px) {
+        height: clamp(260px, 21vw, 380px);
+      }
+
+      & > li {
+        padding-bottom: 8px;
+        border-top: transparent;
+        border-bottom: solid 1px var(--black);
+
+        &::after,
+        &::before, {
+          display: none;
+        }
+
+        div:last-of-type {
+
+          span, div {
+            font-weight: 400;
+            font-size: clamp(12px, 1vw, 16px);
+            line-height: clamp(12px, 1vw, 16px);
+          }
+
+          ol {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 12px;
+            margin-left: 15px;
+          }
+
+          ol, li {
+            list-style: decimal !important;
+            list-style-type: decimal !important;
+            -webkit-list-style: decimal !important;
+          }
+
+          ol, p {
+            font-size: clamp(8px, 1vw, 12px);
+            line-height: clamp(10px, 1vw, 14px);
+          }
+
+        }
+
+      }
+    }
+
+    &__item {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-self: start;
+      padding: 8px;
+      color: var(--black);
+
+      @media (max-width: 500px) {
+        position: sticky;
+        top: 0;
+      }
+
+      &:first-child {
+        display: none;
+
+        @media (max-width: 770px) {
+          display: block;
+          padding: 0;
+        }
+
+        h2 {
+          @media (max-width: 770px) {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            display: block;
+          }
+
+          br {
+            @media (max-width: 550px) {
+              display: none;
+            }
+          }
+        }
+
+      }
+
+      &:last-child {
+        @media (max-width: 770px) {
+          grid-template-columns: clamp(180px, 34vw, 255px) 1fr;
+          gap: 0;
+        }
+
+        picture {
+          @media (max-width: 770px) {
+            max-width: 300px;
+            justify-self: end;
+          }
+
+          @media (max-width: 550px) {
+            max-width: initial;
+            justify-self: center;
+          }
+        }
+
+
+      }
+
+      @media (max-width: 770px) {
+        grid-template-columns: clamp(200px, 36vw, 276px) 1fr;
+        gap: clamp(30px, 10vw, 103px);
+        padding: clamp(8px, 3vw, 28px) 8px;
+      }
+
+      &:not(:first-child) {
+        @media (max-width: 550px) {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
+
+    }
+
+    &__item.apartmentFinishing {
+      background-color: var(--gray);
+    }
+    &__item.planningSolutions {
+      background-color: var(--brown_light);
+    }
+    &__item.combiningApartments {
+      background-color: var(--brown);
+    }
+
+    &__number {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    &__title {
+      margin-top: clamp(24px, 3vw, 56px);
+      margin-bottom: clamp(24px, 3vw, 56px);
+      font-weight: 400;
+      font-size: clamp(20px, 3vw, 40px);
+      line-height: clamp(20px, 3vw, 36px);
+    }
+
+    &__titleDesc {
+      margin-bottom: clamp(8px, 1vw, 12px);
+      font-weight: 400;
+      font-size: clamp(12px, 1vw, 18px);
+      line-height: clamp(14px, 1vw, 20px);
+
+      &:not(:first-of-type) {
+        margin-top: clamp(12px, 1vw, 16px);
+      }
+    }
+
+    &__desc {
+      font-weight: 400;
+      font-size: clamp(8px, 1vw, 12px);
+      line-height: clamp(10px, 1vw, 14px);
+
+      &:last-of-type {
+        margin-bottom: 8px;
+      }
+    }
+
+
+    &__img,
+    &__picture, {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__img {
+      object-fit: cover;
+      align-self: center;
+
+      @media (max-width: 770px) {
+        object-fit: initial;
+      }
+
+      @media (max-width: 550px) {
+        object-fit: cover;
+      }
+
+
+    }
+
+
+  }
+
+
+}

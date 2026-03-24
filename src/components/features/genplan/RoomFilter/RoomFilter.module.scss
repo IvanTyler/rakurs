@@ -1,0 +1,53 @@
+.roomFilter {
+  position: absolute;
+  z-index: 10;
+  left: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 1vw, 32px);
+
+  &__title {
+    font-weight: 400;
+    font-size: clamp(14px, 1vw, 18px);
+    line-height: clamp(16px, 1vw, 20px);
+    color: var(--grey-light);
+    opacity: 0.5;
+  }
+
+
+  .roomFilterList {
+    display: flex;
+
+    &__item {
+      font-size: clamp(10px, 1vw, 14px);
+      line-height: clamp(12px, 1vw, 16px);
+      background-color: var(--white);
+      color: var(--black);
+      padding: clamp(12px, 1vw, 16px) clamp(16px, 2vw, 24px);
+      cursor: pointer;
+      transition: background-color var(--transitionTime), color var(--transitionTime);
+
+      &:first-child {
+        background-color: var(--black);
+        color: var(--grey-light);
+
+        &:hover {
+          background-color: lighten(#242424, 6%);
+        }
+      }
+
+    }
+
+    &__item.active {
+      background-color: darken(#fff, 10%);
+
+      &:first-child {
+        background-color: lighten(#242424, 6%);
+      }
+    }
+
+  }
+
+
+}

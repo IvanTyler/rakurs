@@ -1,0 +1,19 @@
+.rakursConceptImages {
+  grid-area: contentMediaImages;
+  height: clamp(290px, 29vw, 546px);
+  display: flex;
+  justify-self: end;
+  gap: clamp(8px, 1vw, 12px);
+  max-width: 1419px;
+  margin-top: clamp(58px, 5vw, 88px);
+  margin-bottom: clamp(32px, 4vw, 64px);
+
+  @media (max-width: 1445px) {
+    max-width: 1005px;
+  }
+
+  @media (max-width: 970px) {
+    grid-column: 1 / span 3;
+  }
+
+}

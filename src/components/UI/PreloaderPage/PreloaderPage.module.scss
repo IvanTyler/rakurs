@@ -1,0 +1,138 @@
+.preloaderPage {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-rows: 6fr 1fr;
+  gap: clamp(30px, 10vw, 80px);
+  width: 100%;
+  height: 100%;
+  background-color: var(--brown);
+  padding: clamp(8px, 1vw, 12px);
+  transition: clip-path 1s;
+  clip-path: polygon(
+                  0% 0%,   /* точка 1 */
+                  50% 0%,  /* точка 2 (будущая граница левой полосы) */
+                  50% 100%,/* точка 3 */
+                  0% 100%, /* точка 4 */
+                  0% 0%,   /* точка 5 (возврат для структуры) */
+                  50% 0%,  /* точка 6 (будущая граница правой полосы) */
+                  100% 0%, /* точка 7 */
+                  100% 100%,/* точка 8 */
+                  50% 100%,/* точка 9 */
+                  50% 0%
+  );
+
+  &.closing {
+    clip-path: polygon(
+                    0% 0%, // левый верх (начало левой полосы)
+                    0% 0%, // правая граница левой полосы
+                    0% 100%, // правая граница левой полосы внизу
+                    0% 100%, // левый низ
+                    0% 0%, // возврат для разрыва
+
+                    86% 0%, // левая граница правой полосы
+                    100% 0%, // правый верх
+                    100% 100%, // правый низ
+                    100% 100%, // левая граница правой полосы внизу
+                    100% 0% // замыкание
+    );
+  }
+
+  @keyframes showSvgBlock {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  &__wrapperLoaderSvg {
+    position: relative;
+    justify-self: center;
+    align-self: end;
+    max-width: 704px;
+    transition: opacity;
+    animation: showSvgBlock 3.5s ease;
+  }
+
+  &__svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__progressPath {
+    transition: stroke-dashoffset var(--transitionTime) ease;
+    stroke-dashoffset: 1935;
+    stroke-dasharray: 1935;
+
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+}
+
+.letters {
+  display: flex;
+  justify-content: space-between;
+  gap: clamp(10px, 5vw, 30px);
+  align-self: end;
+  height: clamp(150px, 20vw, 360px);
+
+  @keyframes showLetter {
+    0% {
+      transform: translateY(calc(100% + 12px));
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  &__item {
+    color: var(--black);
+    text-transform: uppercase;
+    transform: translateY(0);
+    transition: all var(--transitionTime);
+
+    &:first-child {
+      animation: showLetter 0.9s ease;
+    }
+
+    &:nth-child(2) {
+      animation: showLetter 1s ease;
+    }
+
+    &:nth-child(3) {
+      animation: showLetter 1.1s ease;
+    }
+
+    &:nth-child(4) {
+      animation: showLetter 1.2s ease;
+    }
+
+    &:nth-child(5) {
+      animation: showLetter 1.3s ease;
+    }
+
+    &:last-child {
+      animation: showLetter 1.4s ease;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+

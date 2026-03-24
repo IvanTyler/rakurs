@@ -1,0 +1,43 @@
+
+.descSection {
+  grid-area: descSection;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: clamp(10px, 1vw, 14px);
+  line-height: clamp(12px, 1vw, 16px);
+  opacity: 1;
+  transition: opacity var(--transitionTime);
+  color: var(--black);
+
+  @media (max-width: 970px) {
+    grid-column: 3 / span 1;
+  }
+
+  &.hiding {
+    animation: hideAnimation 2s ease;
+    -webkit-animation: hideAnimation 2s ease;
+  }
+
+  &.showing {
+    animation: showAnimation 1.5s ease;
+    -webkit-animation: showAnimation 1.5s ease;
+  }
+
+  @keyframes hideAnimation {
+    0% {
+      clip-path: inset(0 0 0 0);
+    }
+    100% {
+      clip-path: inset(0 100% 0 0);
+    }
+  }
+
+  @keyframes showAnimation {
+    0% {
+      clip-path: inset(0 100% 0 0);
+    }
+    100% {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}

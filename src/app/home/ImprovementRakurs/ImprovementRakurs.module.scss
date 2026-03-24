@@ -1,0 +1,49 @@
+.improvementRakurs {
+
+  .containerImprovementRakurs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    margin-left: auto;
+    max-width: 1165px;
+
+    @media (max-width: 1400px) {
+      max-width: 755px;
+      margin-left: auto;
+      margin-right: 50px;
+    }
+
+    @media (max-width: 1050px) {
+      max-width: 585px;
+    }
+
+    @media (max-width: 800px) {
+      max-width: 420px;
+    }
+
+  }
+
+  &__underlined {
+    margin-left: 225px;
+
+    @media (max-width: 1400px) {
+      margin-left: 170px;
+    }
+
+    @media (max-width: 800px) {
+      margin-left: 118px;
+    }
+
+    @media (max-width: 500px) {
+      margin-left: 70px;
+    }
+
+  }
+
+  &__images {
+    margin-top: clamp(80px, 10vw, 112px);
+  }
+
+}

@@ -1,0 +1,158 @@
+.rasursPromo {
+  height: clamp(650px, 122vw, 2366px);
+  background-image: url("../../../../public/images/first-display/hero-house-main.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media (max-width: 1030px) {
+    background-image: url("../../../../public/images/first-display/hero-house-main-1024.webp");
+  }
+
+  @media (max-width: 720px) {
+    height: clamp(650px, 140vw, 2366px);
+  }
+
+  .containerRasursPromo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'title centerBlock slider';
+    position: relative;
+    padding-top: 96px;
+    height: 100%;
+    padding-bottom: 5px;
+
+
+    @media (max-width: 720px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        'title'
+        'centerBlock'
+        'slider';
+    }
+  }
+
+  &__center {
+    grid-area: centerBlock;
+  }
+
+  &__title {
+    grid-area: title;
+    margin-top: 585px;
+    max-width: 630px;
+    font-family: var(--main-font);
+    font-weight: 400;
+    font-size: clamp(28px, 3.6vw, 72px);
+    line-height: clamp(26px, 3.6vw, 64px);
+
+    @media (max-width: 1880px) {
+      margin-top: 500px;
+    }
+
+    @media (max-width: 1720px) {
+      margin-top: 400px;
+    }
+
+    @media (max-width: 1420px) {
+      margin-top: 71px;
+    }
+
+    @media (max-width: 1030px) {
+      grid-column: 1 / span 2;
+      margin-top: 50px;
+      max-width: 440px;
+    }
+
+    @media (max-width: 910px) {
+      margin-top: 20px;
+      max-width: 340px;
+    }
+
+    @media (max-width: 450px) {
+      margin-top: -20px;
+    }
+
+  }
+
+  div.rasursPromo__sliderContainer {
+    justify-self: end;
+    margin-top: clamp(500px, 31vw, 619px);
+
+
+    @media (max-width: 1720px) {
+      margin-top: 400px;
+    }
+
+    @media (max-width: 1380px) {
+      margin-top: 270px;
+    }
+
+    @media (max-width: 1030px) {
+      margin-top: 500px;
+    }
+
+    @media (max-width: 970px) {
+      margin-top: 420px;
+    }
+
+    @media (max-width: 910px) {
+      margin-top: 300px;
+    }
+
+    @media (max-width: 730px) {
+      margin-top: 270px;
+    }
+
+    @media (max-width: 720px) {
+      margin-top: 0;
+      max-width: 393px;
+      height: 132px;
+      align-self: end;
+      justify-self: start;
+    }
+
+    @media (max-width: 450px) {
+      max-width: 305px;
+      height: 102px;
+    }
+  }
+
+  a.linkSlider {
+
+    @media (max-width: 720px) {
+      background-image: url("../../../assets/images/first-display/rectangle-white.svg");
+    }
+
+  }
+
+  .rasursPromo__desc,
+  .rasursPromo__discount {
+    @media (max-width: 720px) {
+      color: var(--grey-light)
+    }
+  }
+
+  :global(.swiper-pagination) {
+    position: absolute !important;
+    bottom: 5px !important;
+    right: 0 !important;
+    left: auto !important;
+    width: auto !important;
+    text-align: right !important;
+    z-index: 10 !important;
+
+    :global(.swiper-pagination-bullet) {
+
+      @media (max-width: 720px) {
+        border: solid 1px var(--white);
+      }
+    }
+
+    :global(.swiper-pagination-bullet.swiper-pagination-bullet-active) {
+
+      @media (max-width: 720px) {
+        background-color: var(--white) !important;
+      }
+    }
+  }
+
+}

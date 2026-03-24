@@ -1,0 +1,229 @@
+.location {
+  margin-top: clamp(40px, 6vw, 100px);
+  padding-bottom: clamp(70px, 11vw, 200px);
+
+  .containerLocation {
+    position: relative;
+    display: grid;
+    grid-template-columns: clamp(627px, 71vw, 1352px) 1fr 1fr;
+    grid-template-rows: clamp(90px, 9.5vw, 200px) 1fr;
+    grid-template-areas:
+      'leftBlock title title'
+      'leftBlock desc desc'
+      'leftBlock link link';
+    gap: clamp(8px, 1vw, 12px);
+
+    @media (max-width: 880px) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      grid-template-areas:
+      'title title'
+      'desc desc'
+      'leftBlock leftBlock'
+      'link link';
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      'title'
+      'desc'
+      'leftBlock'
+      'link';
+    }
+
+  }
+
+  &__leftBlock {
+    grid-area: leftBlock;
+    display: grid;
+    grid-template-areas:
+      'label label'
+      'picture locationTimesList';
+    gap: clamp(8px, 1vw, 12px);
+
+    @media (max-width: 880px) {
+      grid-template-columns: clamp(50px, 5vw, 155px) 1fr 1fr;
+      grid-template-areas:
+      'label label'
+      'picture picture'
+      'locationTimesList locationTimesList';
+      margin-top: clamp(40px, 5vw, 60px);
+    }
+
+
+  }
+
+  &__label {
+    grid-area: label;
+    color: var(--black);
+    font-size: clamp(10px, 1vw, 14px);
+    font-weight: 400;
+    line-height: clamp(12px, 1vw, 16px);
+  }
+
+  &__picture {
+    grid-area: picture;
+
+    @media (max-width: 880px) {
+      grid-column: 1 / span 3;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    position: absolute;
+    top: 0;
+    left: -420px;
+    justify-self: end;
+    grid-area: title;
+    font-weight: 400;
+    font-size: clamp(22px, 2.5vw, 48px);
+    line-height: clamp(24px, 2.5vw, 46px);
+
+    @media (max-width: 1200px) {
+      left: -230px;
+      font-size: clamp(22px, 2.2vw, 48px);
+      line-height: clamp(24px, 2.2vw, 46px);
+    }
+
+    @media (max-width: 1170px) {
+      left: -300px;
+    }
+
+    @media (max-width: 880px) {
+      position: static;
+      max-width: 490px;
+    }
+
+    @media (max-width: 600px) {
+      justify-self: center;
+    }
+
+  }
+
+  &__underlinedText {
+    margin-left: 320px;
+
+    @media (max-width: 1200px) {
+      margin-left: clamp(51px, 5vw, 110px);
+    }
+  }
+
+  &__desc {
+    grid-area: desc;
+    max-width: 231px;
+    justify-self: end;
+    font-weight: 400;
+    font-size: clamp(10px, 1vw, 14px);
+    line-height: clamp(12px, 1vw, 16px);
+
+    @media (max-width: 880px) {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      max-width: 277px;
+    }
+
+    @media (max-width: 600px) {
+      position: static;
+      margin-top: 24px;
+      justify-self: center;
+    }
+
+  }
+
+  .locationTimesList {
+    grid-area: locationTimesList;
+    justify-self: start;
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 1vw, 24px);
+
+    @media (max-width: 880px) {
+      flex-direction: initial;
+      justify-self: end;
+      grid-column: 2 / span 2;
+    }
+
+    @media (max-width: 600px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 530px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__item {
+      display: grid;
+      grid-template-columns: clamp(45px, 6vw, 93px) 1fr;
+      grid-template-areas:
+        'time icon'
+        'metro metro';
+      gap: 2px 4px;
+
+      &:last-child {
+        grid-template-columns: 1fr 1fr;
+
+        @media (max-width: 600px) {
+          grid-column: 2 / span 1;
+        }
+      }
+    }
+
+    &__time {
+      grid-area: time;
+      white-space: nowrap;
+      font-weight: 400;
+      font-size: clamp(16px, 2vw, 32px);
+      line-height: clamp(15px, 2vw, 30px);
+    }
+
+    i {
+      grid-area: icon;
+      font-size: clamp(16px, 2vw, 35px);
+    }
+
+    &__metro {
+      grid-column: 1 / span 2;
+      font-weight: 400;
+      font-size: clamp(10px, 1vw, 14px);
+      line-height: clamp(14px, 1vw, 16px);
+    }
+
+  }
+
+  &__link {
+    grid-area: link;
+    align-self: end;
+    justify-self: end;
+    border: solid 1px var(--black);
+    color: var(--black);
+
+    @media (max-width: 880px) {
+      margin-top: clamp(24px, 1vw, 32px);
+      margin-right: 103px;
+    }
+
+    @media (max-width: 600px) {
+      justify-self: center;
+      margin-right: 0;
+    }
+
+    &::after {
+      align-self: start;
+      border: solid 1px var(--black);
+      border-bottom: #0000;
+      border-left: #0000;
+      width: clamp(8px, 1vw, 16px);
+      height: clamp(8px, 1vw, 16px);
+    }
+  }
+
+}

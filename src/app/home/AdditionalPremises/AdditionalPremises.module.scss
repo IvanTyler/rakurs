@@ -1,0 +1,58 @@
+.additionalPremises {
+  background-color: var(--brown_light);
+
+  .containerAdditionalPremises {
+    display: grid;
+    grid-template-areas:
+      'title title'
+      'storerooms parking';
+    grid-template-columns: clamp(246px, 25vw, 465px) 1fr;
+    gap: clamp(60px, 8vw, 140px) clamp(9px, 13vw, 251px);
+    padding-bottom: clamp(90px, 11vw, 200px);
+
+    @media (max-width: 900px) {
+      gap: clamp(60px, 8vw, 140px) 9px;
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+      'title'
+      'storerooms'
+      'parking';
+    }
+  }
+
+  &__title {
+    grid-area: title;
+    justify-self: end;
+
+    br {
+      @media (max-width: 450px) {
+        display: none;
+      }
+    }
+  }
+
+  &__underlined {
+    display: none;
+  }
+
+  &__underlinedText {
+    margin: 0 4px;
+  }
+
+  &__firstLetter {
+    margin-left: clamp(44px, 13vw, 243px);
+  }
+
+
+  &__parking {
+
+    @media (max-width: 500px) {
+      margin-top: -20px;
+    }
+  }
+
+
+}

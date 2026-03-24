@@ -1,0 +1,14 @@
+deploy-to-test:
+   stage: deploy
+   script:
+    - ls -la
+    - npm install
+    - npm run build
+    - ls -la
+    - rsync -av --delete ./out/ nodejs-site@192.168.253.112:/var/www/nodejs-site/data/www/next.rakurs.moscow/
+   tags:
+     - nodejs_test
+   rules:
+     - if: $CI_COMMIT_BRANCH == "rakurs-next"
+       when: on_success
+     - when: never

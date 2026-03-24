@@ -1,0 +1,81 @@
+.corpsSection {
+  position: relative;
+
+  &__selectionItem {
+    align-self: center;
+
+    @media (max-width: 500px) {
+      align-self: start;
+    }
+  }
+
+  .containerCorps {
+    display: grid;
+    grid-template-areas:
+      'wrapperCorps wrapperCorps wrapperCorps wrapperCorps wrapperCorps'
+      'title desc desc desc desc';
+    gap: clamp(8px, 1vw, 12px);
+    padding-bottom: clamp(90px, 11vw, 200px);
+
+    @media (max-width: 1050px) {
+      grid-template-areas:
+        'wrapperCorps wrapperCorps'
+        'title desc';
+    }
+
+    @media (max-width: 500px) {
+      grid-template-areas:
+        'wrapperCorps'
+        'title'
+        'desc';
+    }
+
+  }
+
+  &__title {
+    grid-area: title;
+    max-width: 400px;
+    font-weight: 400;
+    font-size: clamp(16px, 2vw, 32px);
+    line-height: clamp(16px, 2vw, 32px);
+
+    @media (max-width: 1050px) {
+      max-width: 260px;
+    }
+
+    @media (max-width: 500px) {
+      justify-self: center;
+    }
+  }
+
+  &__desc {
+    grid-area: desc;
+    font-weight: 400;
+    font-size: clamp(12px, 1vw, 18px);
+    line-height: clamp(14px, 1vw, 20px);
+    max-width: 445px;
+
+    @media (max-width: 1050px) {
+      max-width: 200px;
+    }
+
+    @media (max-width: 780px) {
+      justify-self: end;
+    }
+
+    @media (max-width: 500px) {
+      justify-self: center;
+      max-width: 260px;
+      margin-top: 12px;
+    }
+  }
+
+  &__wrapperCorps {
+    grid-area: wrapperCorps;
+    position: relative;
+    display: grid;
+    padding: clamp(8px, 1vw, 12px);
+    height: clamp(596px, 43vw, 819px);
+  }
+
+}
