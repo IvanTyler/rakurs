@@ -1,0 +1,20 @@
+.mediaSection {
+  background-color: var(--green-light);
+  padding-top: 96px;
+
+  .containerMedia {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3vw, 52px);
+    padding-bottom: clamp(20px, 3vw, 40px);
+  }
+
+  @media (max-width: 770px) {
+    padding-top: 96px;
+  }
+
+  @media (max-width: 450px) {
+    padding-top: 48px;
+  }
+
+}

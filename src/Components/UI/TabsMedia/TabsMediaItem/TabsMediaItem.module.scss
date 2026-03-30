@@ -1,0 +1,27 @@
+.tabsMediaItem {
+  cursor: pointer;
+
+  &__text {
+    font-weight: 400;
+    color: var(--black);
+    opacity: 0.5;
+    font-size: clamp(28px, 4vw, 72px);
+    line-height: clamp(30px, 4vw, 74px);
+  }
+
+  &:not(:last-child) {
+    &::after {
+      content: '/';
+      color: var(--black);
+      opacity: 0.5;
+      font-size: clamp(28px, 4vw, 72px);
+      line-height: clamp(30px, 4vw, 74px);
+      margin: 0 clamp(4px, 1vw, 12px);
+    }
+  }
+
+  &__active {
+    opacity: 1;
+  }
+
+}

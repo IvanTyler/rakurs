@@ -1,15 +1,14 @@
 'use client'
 
 import {FC} from "react";
-import {fetchRubrics} from "@/src/Api/Rubrics";
-import {queryClient} from "@/src/Api/queryClient";
 import {Preloader} from "@/src/Components/UI/Preloader/Preloader";
-import {SectionNews} from "@/src/app/news/SectionNews/SectionNews";
+import {SectionNews} from "@/src/app/media/News/SectionNews/SectionNews";
 import {useQuery} from "@tanstack/react-query";
+import {fetchRubrics} from "@/src/api/Rubrics";
+import {queryClient} from "@/src/api/queryClient";
 
 
-
-export const NewsMenedjementView: FC = () => {
+export const RubricsManagementView: FC = () => {
 
     const rubrics = useQuery({
         queryFn: fetchRubrics,
@@ -23,6 +22,6 @@ export const NewsMenedjementView: FC = () => {
         case 'success':
             return <SectionNews rubrics={rubrics.data}/>
         case 'error':
-            <p>Данных нет</p>
+            <p>Рубрик нет</p>
     }
 }
