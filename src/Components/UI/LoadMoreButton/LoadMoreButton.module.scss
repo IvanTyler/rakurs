@@ -1,0 +1,23 @@
+.loadMoreButton {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: end;
+  max-width: 316px;
+  width: 316px;
+  height: clamp(44px, 4vw, 64px);
+  padding: 12px;
+  border: solid 1px var(--black);
+  color: var(--black);
+  font-size: clamp(10px, 1vw, 14px);
+  line-height: clamp(12px, 1vw, 16px);
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    height: clamp(12px, 1vw, 16px);
+    width: clamp(12px, 1vw, 16px);
+    background-image: url("/icons/add.svg");
+    background-size: cover;
+  }
+}

@@ -1,7 +1,7 @@
 import {FC} from "react";
 import style from './NewsItem.module.scss'
-import {NewsType} from "@/src/api/types/news";
-import {getCurrentDateInRussian} from "@/src/Utils/dateInRussian";
+import {NewsType} from "@/src/Api/types/news";
+import {getCurrentDateInRussian} from "@/src/utils/dateInRussian";
 import {LinkToPage} from "@/src/Components/UI/LinkToPage/LinkToPage";
 
 interface NewsItemProps {

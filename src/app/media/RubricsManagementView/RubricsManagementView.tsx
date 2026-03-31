@@ -4,8 +4,8 @@ import {FC} from "react";
 import {Preloader} from "@/src/Components/UI/Preloader/Preloader";
 import {SectionNews} from "@/src/app/media/News/SectionNews/SectionNews";
 import {useQuery} from "@tanstack/react-query";
-import {fetchRubrics} from "@/src/api/Rubrics";
-import {queryClient} from "@/src/api/queryClient";
+import {fetchRubrics} from "@/src/Api/Rubrics";
+import {queryClient} from "@/src/Api/queryClient";
 
 
 export const RubricsManagementView: FC = () => {

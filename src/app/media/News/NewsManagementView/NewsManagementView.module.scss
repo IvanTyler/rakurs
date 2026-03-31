@@ -1,0 +1,7 @@
+.newsManagementView {
+
+  &__loadContentButton {
+    justify-self: center;
+    margin-top: clamp(40px, 5vw, 80px);
+  }
+}

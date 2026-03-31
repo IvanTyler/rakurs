@@ -1,6 +1,7 @@
-import {Host} from "@/src/Api/Host";
 import axios from "axios";
 import {rubricsResponseType} from "@/src/Api/types/typesRubrics";
+import {NewsResponse} from "@/src/Api/types/news";
+import {Host} from "@/src/Api/Host";
 import {AppToken} from "@/src/Api/AppToken";
 
 
@@ -18,22 +19,28 @@ export async function fetchRubrics(): Promise<rubricsResponseType> {
 }
 
 
-export async function fetchNews(arrayId: number[]): Promise<rubricsResponseType> {
+type dataNews = {
+    id_rubric: number[];
+    limit?: number;
+    page?: number;
+}
+
+export async function fetchNews({id_rubric, limit,
+                                page}: dataNews): Promise<NewsResponse> {
     const url = `${Host}/entries/`;
 
-    const params = new URLSearchParams();
-
-    const ids = Array.isArray(arrayId) ? arrayId : [arrayId];
-    ids.forEach(id => params.append('id_rubric[]', String(id)));
-    params.append('orderBy', 'date_article DESC');
-
-
-    const response = await axios.get<rubricsResponseType>(
+    const response = await axios.get<NewsResponse>(
         url,
         {
             headers: {
                 'APPTOKEN': AppToken,
                 'SUBDOMAIN': 'bestcon'
+            },
+            params: {
+                'id_rubric[]': id_rubric,
+                orderBy: 'date_article DESC',
+                limit: limit,
+                page: page,
             }
         }
     );
