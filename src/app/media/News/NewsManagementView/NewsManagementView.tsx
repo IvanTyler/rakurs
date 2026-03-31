@@ -19,7 +19,7 @@ export const NewsManagementView: FC<NewsManagementViewProps> = ({ IdNews }) => {
     const [allNews, setAllNews] = useState<NewsType[] | any[]>([]);
     const [hasMore, setHasMore] = useState(true);
     const [totalCount, setTotalCount] = useState(0);
-    const LIMIT = 16;
+    const LIMIT = 10;
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ['news', IdNews],
@@ -40,6 +40,8 @@ export const NewsManagementView: FC<NewsManagementViewProps> = ({ IdNews }) => {
         if (data?.articles?.length) {
             setAllNews(data.articles);
             setTotalCount(data.count);
+
+            if (data.count === LIMIT)  setHasMore(false);
         }
     }, [data]);
 
@@ -69,6 +71,7 @@ export const NewsManagementView: FC<NewsManagementViewProps> = ({ IdNews }) => {
     }, queryClient);
 
     const remainingCount = totalCount - allNews.length;
+    const currentCountNews = remainingCount < LIMIT ? remainingCount : LIMIT;
 
     if (isLoading) return <Preloader />;
     if (isError) return <p>Не удалось загрузить новости</p>;
@@ -79,7 +82,7 @@ export const NewsManagementView: FC<NewsManagementViewProps> = ({ IdNews }) => {
             {hasMore &&
                 <LoadMoreButton
                     classNameButton={style.newsManagementView__loadContentButton}
-                    count={remainingCount}
+                    count={currentCountNews}
                     total={totalCount}
                     onClick={() => loadMore()}
                     isLoading={isLoadingMore}
