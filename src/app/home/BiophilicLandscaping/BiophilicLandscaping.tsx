@@ -7,7 +7,7 @@ import {SectionTitle} from "@/src/Components/UI/SectionTitle/SectionTitle";
 import {ImagesSlider} from "@/src/app/home/ImagesSlider/ImagesSlider";
 import {ImagesList} from "@/src/app/home/ImagesList/imagesList";
 import {biophilicLandscapingImagesData} from "@/src/app/home/BiophilicLandscaping/data";
-import {useWindowWidth} from "@/src/Hooks/WidthWindowSize";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
 export const BiophilicLandscaping: FC = () => {
 

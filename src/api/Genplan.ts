@@ -1,7 +1,7 @@
-import {Host} from "@/src/Api/Host";
-import {AppToken} from "@/src/Api/AppToken";
+import {Host} from "@/src/api/Host";
+import {AppToken} from "@/src/api/AppToken";
 import axios from "axios";
-import {GenolanDataType, GenplanDataSchema, HouseFloorsType, houseTotalsResponse} from "@/src/Api/types/typesGenplan";
+import {GenolanDataType, GenplanDataSchema, HouseFloorsType, houseTotalsResponse} from "@/src/api/types/typesGenplan";
 
 
 export async function fetchGenplan() {

@@ -2,7 +2,7 @@
 
 import {FC} from "react";
 import style from './SectionNews.module.scss'
-import {rubricsResponseType} from "@/src/Api/types/typesRubrics";
+import {rubricsResponseType} from "@/src/api/types/typesRubrics";
 import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
 import {NewsManagementView} from "@/src/app/media/News/NewsManagementView/NewsManagementView";
 

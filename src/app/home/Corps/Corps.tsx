@@ -9,7 +9,7 @@ import {SelectionItem} from "@/src/Components/UI/SelectionItem/SelectionItem";
 import {MobileScrollHint} from "@/src/Components/UI/MobileScrollHint/MobileScrollHint";
 import {clsx} from "clsx";
 import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
-import {useWindowWidth} from "@/src/Hooks/WidthWindowSize";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
 export const Corps: FC = () => {
 

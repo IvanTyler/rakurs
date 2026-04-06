@@ -2,14 +2,14 @@
 
 import {FC, useEffect, useMemo, useRef, useState} from "react";
 import style from "./FloorPlan.module.scss";
-import {fetchHouseFloorsFilterRooms, fetchHouseFloorTotals} from "@/src/Api/Genplan";
+import {fetchHouseFloorsFilterRooms, fetchHouseFloorTotals} from "@/src/api/Genplan";
 import {clsx} from "clsx";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from "swiper/modules";
 import {useQuery} from "@tanstack/react-query";
-import {queryClient} from "@/src/Api/queryClient";
-import {filterFloorsType, generalPlanType, HouseFloorsType, pointsType} from "@/src/Api/types/typesGenplan";
-import {useWindowWidth} from "@/src/Hooks/WidthWindowSize";
+import {queryClient} from "@/src/api/queryClient";
+import {filterFloorsType, generalPlanType, HouseFloorsType, pointsType} from "@/src/api/types/typesGenplan";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 import {InfoCardBuild} from "@/src/Components/features/Genplan/InfoCardBuild/InfoCardBuild";
 
 

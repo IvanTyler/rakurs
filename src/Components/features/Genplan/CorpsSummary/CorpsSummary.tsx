@@ -1,8 +1,8 @@
 import {FC} from "react";
 import style from './CorpsSummary.module.scss';
-import {plural} from "@/src/Utils/Pluar";
-import {formatPrice} from "@/src/Utils/FormatPrice";
-import {formatQuarterYear} from "@/src/Utils/FormatQuarterYear";
+import {plural} from "@/src/utils/Pluar";
+import {formatPrice} from "@/src/utils/FormatPrice";
+import {formatQuarterYear} from "@/src/utils/FormatQuarterYear";
 
 
 interface ICorpsSummaryProps {

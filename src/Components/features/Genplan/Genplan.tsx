@@ -12,13 +12,13 @@ import {SectionTitle} from "@/src/Components/UI/SectionTitle/SectionTitle";
 import {LinkToPage} from "@/src/Components/UI/LinkToPage/LinkToPage";
 import {Button} from "@/src/Components/UI/SubmitButton/Button";
 import {useQuery} from "@tanstack/react-query";
-import {fetchGenplan, fetchHouseFloors, fetchHouseTotals} from "@/src/Api/Genplan";
-import {queryClient} from "@/src/Api/queryClient";
+import {fetchGenplan, fetchHouseFloors, fetchHouseTotals} from "@/src/api/Genplan";
+import {queryClient} from "@/src/api/queryClient";
 import {ListItems} from "@/src/Components/List/ListItems";
 import {MobileScrollHint} from "@/src/Components/UI/MobileScrollHint/MobileScrollHint";
-import {useWindowWidth} from "@/src/Hooks/WidthWindowSize";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
-import {houseTotalType, pointsType} from "@/src/Api/types/typesGenplan";
+import {houseTotalType, pointsType} from "@/src/api/types/typesGenplan";
 import {GenplanOverlay} from "@/src/Components/features/Genplan/GenplanOverlay/GenplanOverlay";
 import {InfoCardBuild} from "@/src/Components/features/Genplan/InfoCardBuild/InfoCardBuild";
 import {RoomFilter} from "@/src/Components/features/Genplan/RoomFilter/RoomFilter";
@@ -30,7 +30,7 @@ import {dataSvg} from "@/src/Components/features/Genplan/dataSvg";
 export const Genplan: FC = () => {
 
     const [hoveredCode, setHoveredCode] = useState<string | null>(null);
-    const [selectedCorps, setSelectedCorps] = useState<string | null | any>(null);
+    const [selectedCorps, setSelectedCorps] = useState<string | null | any>('');
     const [mode, setMode] = useState<'corps' | 'floors'>('corps');
 
     const [selectedRooms, setSelectedRooms] = useState<any[]>([]);
@@ -80,16 +80,28 @@ export const Genplan: FC = () => {
     const activeCardData: pointsType = generalGenplan.find((el: pointsType) => el.code === hoveredCode) || generalGenplan[0]
 
     const houseTotalsData = useQuery({
-        queryFn: () => fetchHouseTotals(mode === 'corps' ? hoveredCode : selectedCorps),
+        queryFn: async () => {
+            const id = mode === 'corps' ? hoveredCode : selectedCorps;
+            console.log('houseTotals queryFn called with id:', id); // для отладки
+            if (!id) {
+                console.log('Skipping fetch - no id');
+                return null;
+            }
+            return fetchHouseTotals(id);
+        },
         queryKey: ['houseTotals', mode === 'corps' ? hoveredCode : selectedCorps],
+        enabled: !!(mode === 'corps' ? hoveredCode : selectedCorps),
+        staleTime: Infinity,
     }, queryClient);
 
     const minPriceApartment = () => {
-        if (selectedCorps && houseTotalsData.status === 'success') {
+        if (selectedCorps && houseTotalsData.status === 'success' && houseTotalsData.data) {
 
             const prices = houseTotalsData?.data.totals.map((el: houseTotalType) => Number(el.min_cost));
             return Math.min(...prices);
         }
+
+        return undefined;
     }
     const minPrice = minPriceApartment();
 
@@ -101,8 +113,17 @@ export const Genplan: FC = () => {
     console.log('floorData', floorData)
 
     const houseFloorsData = useQuery({
-        queryFn: () => fetchHouseFloors(selectedCorps),
+        queryFn: async () => {
+            // Добавьте эту проверку
+            if (!selectedCorps) {
+                console.log('Skipping houseFloors - no selectedCorps');
+                return null;
+            }
+            return fetchHouseFloors(selectedCorps);
+        },
         queryKey: ['houseFloors', selectedCorps],
+        enabled: !!(mode === 'floors' && selectedCorps), // Добавьте enabled
+        staleTime: Infinity,
     }, queryClient);
 
 
@@ -112,7 +133,6 @@ export const Genplan: FC = () => {
         }
     }
     const countFloors = isFloorsData();
-
 
     const setScrollbar = (isScroll: boolean) => setIsScrollbar(isScroll);
 
@@ -128,7 +148,7 @@ export const Genplan: FC = () => {
                     <Image className={style.genplan__img} src={imgGenplan} alt={'genplan'}/>
                 </picture>
 
-                {houseFloorsData.status === 'success' &&
+                {houseFloorsData.status === 'success' && houseFloorsData.data &&
 					<FloorPlan
 						codeCorps={selectedCorps}
 						houseFloorsData={houseFloorsData.data}

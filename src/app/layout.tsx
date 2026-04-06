@@ -27,6 +27,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body>
+
             <Wrapper>
                 <Header/>
                 <main className='main'>

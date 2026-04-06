@@ -10,7 +10,7 @@ import {ContentMediaImages} from "@/src/app/home/ContentMediaImages/ContentMedia
 
 import {LinkToPage} from "@/src/Components/UI/LinkToPage/LinkToPage";
 import {DescSection} from "@/src/app/home/ContentMediaBlock/DescSection/DescSection";
-import {useWindowWidth} from "@/src/Hooks/WidthWindowSize";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
 interface IContentMediaBlockProps {
     isLink?: boolean;

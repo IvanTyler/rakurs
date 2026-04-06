@@ -1,8 +1,8 @@
 import axios from "axios";
-import {rubricsResponseType} from "@/src/Api/types/typesRubrics";
-import {NewsResponse} from "@/src/Api/types/news";
-import {Host} from "@/src/Api/Host";
-import {AppToken} from "@/src/Api/AppToken";
+import {rubricsResponseType} from "@/src/api/types/typesRubrics";
+import {NewsResponse} from "@/src/api/types/news";
+import {Host} from "@/src/api/Host";
+import {AppToken} from "@/src/api/AppToken";
 
 
 export async function fetchRubrics(): Promise<rubricsResponseType> {

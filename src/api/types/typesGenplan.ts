@@ -1,5 +1,5 @@
 import {z} from "zod";
-import {fetchHouseFloors} from "@/src/Api/Genplan";
+import {fetchHouseFloors} from "@/src/api/Genplan";
 
 const PointSchema = z.object({
     title: z.string(),

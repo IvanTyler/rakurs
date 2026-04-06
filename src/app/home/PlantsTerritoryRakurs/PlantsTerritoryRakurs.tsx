@@ -6,7 +6,7 @@ import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
 import {TabsAccordion} from "@/src/Components/UI/TabsAccardion/TabsAccordion";
 import {plantsTerritoryData} from "@/src/app/home/PlantsTerritoryRakurs/data";
 import {plantsTerritoryType} from "@/src/app/types/plantsTerritoryType";
-import {useWindowWidth} from "@/src/Hooks/WidthWindowSize";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
 export const PlantsTerritoryRakurs: FC = () => {
 

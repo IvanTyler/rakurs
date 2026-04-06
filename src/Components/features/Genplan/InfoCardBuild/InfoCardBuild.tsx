@@ -3,8 +3,8 @@ import style from './InfoCardBuild.module.scss'
 import {Button} from "@/src/Components/UI/SubmitButton/Button";
 
 import {clsx} from "clsx";
-import {plural} from "@/src/Utils/Pluar";
-import {formatQuarterYear} from "@/src/Utils/FormatQuarterYear";
+import {plural} from "@/src/utils/Pluar";
+import {formatQuarterYear} from "@/src/utils/FormatQuarterYear";
 import {HouseInfoList} from "@/src/Components/features/Genplan/HouseInfoList/HouseInfoList";
 
 

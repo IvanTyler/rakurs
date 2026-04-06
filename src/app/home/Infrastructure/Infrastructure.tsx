@@ -5,7 +5,7 @@ import {FC, useRef} from "react";
 import style from './Infrastructure.module.scss'
 import {SectionTitle} from "@/src/Components/UI/SectionTitle/SectionTitle";
 import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
-import {useWindowWidth} from "@/src/Hooks/WidthWindowSize";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 import {DesktopSlider} from "@/src/app/home/Infrastructure/DesktopSlider/DesktopSlider";
 import {MobileSlider} from "@/src/app/home/Infrastructure/MobileSlider/MobileSlider";
 

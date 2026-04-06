@@ -1,4 +1,4 @@
-import {validateResponse} from "@/src/Api/ValidateResponse";
+import {validateResponse} from "@/src/api/ValidateResponse";
 
 
 type QuestionFormType = {

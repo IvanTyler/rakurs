@@ -2,12 +2,12 @@
 
 import { FC, useEffect, useState } from "react";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { fetchNews } from "@/src/Api/Rubrics";
+import { fetchNews } from "@/src/api/Rubrics";
 import { Preloader } from "@/src/Components/UI/Preloader/Preloader";
 import { NewsList } from "@/src/app/media/News/NewsList/NewsList";
-import { queryClient } from "@/src/Api/queryClient";
+import { queryClient } from "@/src/api/queryClient";
 import style from './NewsManagementView.module.scss';
-import {NewsType} from "@/src/Api/types/news";
+import {NewsType} from "@/src/api/types/news";
 import {LoadMoreButton} from "@/src/Components/UI/LoadMoreButton/LoadMoreButton";
 
 interface NewsManagementViewProps {

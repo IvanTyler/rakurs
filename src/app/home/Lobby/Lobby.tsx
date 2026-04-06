@@ -8,7 +8,7 @@ import {SectionTitle} from "@/src/Components/UI/SectionTitle/SectionTitle";
 import {Corps} from "@/src/app/home/Corps/Corps";
 import {KnowledgeHub} from "@/src/app/home/KnowledgeHub/KnowledgeHub";
 import {KnowledgeHubListMobile} from "@/src/app/home/KnowledgeHubListMobile/KnowledgeHubListMobile";
-import {useWindowWidth} from "@/src/Hooks/WidthWindowSize";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
 export const Lobby: FC = () => {
 

@@ -14,11 +14,12 @@ interface BreadCrumbsProps {
 export const BreadCrumbs: FC<BreadCrumbsProps> = ({dataBreadCrumbs}) => {
 
     const pathname = usePathname();
+    const cleanPathname = pathname.replace(/\/$/, '');
 
     const breadCrumbsData = useMemo(() => {
         return dataBreadCrumbs.map(item => ({
             ...item,
-            active: item.path === pathname,
+            active: item.path === cleanPathname,
         }));
     }, [pathname]);
 

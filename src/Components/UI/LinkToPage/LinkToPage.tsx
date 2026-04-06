@@ -6,12 +6,13 @@ import style from './LinkToPage.module.scss'
 interface ILinkToPageProps {
     classname?: string;
     children: React.ReactNode;
+    path?: string;
 }
 
 
-export const LinkToPage: FC<ILinkToPageProps> = ({children, classname}) => {
+export const LinkToPage: FC<ILinkToPageProps> = ({children, classname, path}) => {
     return (
-        <Link className={clsx(style.apartmentSelector, classname)} href={''}>
+        <Link className={clsx(style.apartmentSelector, classname)} href={path ? path : ''}>
             {children}
         </Link>
     )

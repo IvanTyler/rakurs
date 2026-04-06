@@ -1,7 +1,7 @@
 import {FC} from "react";
 import style from "./HouseInfoListItem.module.scss"
-import {plural} from "@/src/Utils/Pluar";
-import {formatPrice} from "@/src/Utils/FormatPrice";
+import {plural} from "@/src/utils/Pluar";
+import {formatPrice} from "@/src/utils/FormatPrice";
 
 interface IHouseInfoListProps {
     item: any;
