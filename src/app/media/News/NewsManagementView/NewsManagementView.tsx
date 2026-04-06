@@ -19,7 +19,7 @@ export const NewsManagementView: FC<NewsManagementViewProps> = ({ IdNews }) => {
     const [allNews, setAllNews] = useState<NewsType[] | any[]>([]);
     const [hasMore, setHasMore] = useState(true);
     const [totalCount, setTotalCount] = useState(0);
-    const LIMIT = 10;
+    const LIMIT = 16;
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ['news', IdNews],
