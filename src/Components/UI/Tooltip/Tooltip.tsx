@@ -1,7 +1,7 @@
 import {FC, useState} from "react";
 import style from './Tooltip.module.scss'
 import {ListItems} from "@/src/Components/List/ListItems";
-import {TooltipItem} from "@/src/Components/UI/AccordionItem.module/TooltipItem";
+import {TooltipItem} from "@/src/Components/UI/AccordionItem/TooltipItem";
 
 
 interface ICorpsItemProps {

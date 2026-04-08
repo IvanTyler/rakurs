@@ -30,7 +30,7 @@ import {dataSvg} from "@/src/Components/features/Genplan/dataSvg";
 export const Genplan: FC = () => {
 
     const [hoveredCode, setHoveredCode] = useState<string | null>(null);
-    const [selectedCorps, setSelectedCorps] = useState<string | null | any>('');
+    const [selectedCorps, setSelectedCorps] = useState<string | null | any>(null);
     const [mode, setMode] = useState<'corps' | 'floors'>('corps');
 
     const [selectedRooms, setSelectedRooms] = useState<any[]>([]);

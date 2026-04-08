@@ -1,6 +1,6 @@
 'use client'
 
-import {FC, useEffect, useMemo, useRef, useState} from "react";
+import {FC, useMemo, useRef, useState} from "react";
 import style from "./FloorPlan.module.scss";
 import {fetchHouseFloorsFilterRooms, fetchHouseFloorTotals} from "@/src/api/Genplan";
 import {clsx} from "clsx";
@@ -230,8 +230,13 @@ export const FloorPlan: FC<IFloorPlanProps> = (
 
 
     const dataHouseFloorTotalsRooms = useQuery({
-        queryFn: () => fetchHouseFloorTotals(codeCorps, floorState),
+        queryFn: () => {
+            if (!floorState) return null
+            return fetchHouseFloorTotals(codeCorps, floorState)
+        },
         queryKey: ['houseFloors', codeCorps, floorState],
+        enabled: !!floorState,
+        staleTime: Infinity,
     }, queryClient);
 
 

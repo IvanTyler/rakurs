@@ -23,7 +23,7 @@ import {Genplan} from "@/src/Components/features/Genplan/Genplan";
 export default function Home() {
     return (
         <>
-            <PreloaderPage/>
+            {/*<PreloaderPage/>*/}
             <RakursPromo/>
             <RakursConcept/>
             <Location/>

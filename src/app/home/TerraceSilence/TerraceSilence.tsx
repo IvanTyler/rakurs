@@ -12,7 +12,7 @@ import {accordionType} from "@/src/app/types/terraceSilence";
 import {TerraceSilenceDesc} from "@/src/app/home/TerraceSilenceDesc/TerraceSilenceDesc";
 import {MobileScrollHint} from "@/src/Components/UI/MobileScrollHint/MobileScrollHint";
 import {clsx} from "clsx";
-import {TooltipItem} from "@/src/Components/UI/AccordionItem.module/TooltipItem";
+import {TooltipItem} from "@/src/Components/UI/AccordionItem/TooltipItem";
 
 export const TerraceSilence: FC = () => {
 

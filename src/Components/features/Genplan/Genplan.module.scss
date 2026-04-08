@@ -20,6 +20,14 @@
     height: 1000px;
     background: linear-gradient(180deg, #77A5C9 0%, #7FABCE 100%);
 
+    @media (max-width: 780px) {
+      height: calc(100% - 124px);
+    }
+
+    @media (max-width: 600px) {
+      width: 600px;
+    }
+
     @media (max-width: 600px) {
       width: 600px;
       padding-bottom: 12px;
