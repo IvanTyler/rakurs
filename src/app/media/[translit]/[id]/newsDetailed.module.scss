@@ -4,12 +4,21 @@
     position: relative;
   }
 
+  &__imgHead {
+    width: 100%;
+    height: clamp(250px, 50vw, 640px);
+    object-fit: cover;
+  }
+
   &__breadCrumbs {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 96px;
+    left: 12px;
+
+    @media (max-width: 450px) {
+      top: 48px;
+    }
+
   }
 
 

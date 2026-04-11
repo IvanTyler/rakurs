@@ -41,7 +41,7 @@ export const NewsManagementView: FC<NewsManagementViewProps> = ({ IdNews }) => {
             setAllNews(data.articles);
             setTotalCount(data.count);
 
-            if (data.count === LIMIT)  setHasMore(false);
+            if (data.count === LIMIT) setHasMore(false);
         }
     }, [data]);
 

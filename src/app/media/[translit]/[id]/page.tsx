@@ -68,7 +68,7 @@ const FetchNewsInfo: FC = () => {
                         loading='lazy'
                         src={dataNews?.thumbnail}
                         alt={dataNews?.title}
-                        clasName={style.newsDetailed__imgHead}
+                        className={style.newsDetailed__imgHead}
                     />
                 </div>
                 <ContainerSection className={style.containerNewsDetailed}>

@@ -12,9 +12,8 @@ export const NewsItem: FC<NewsItemProps> = ({item}) => {
 
     const newDate = getCurrentDateInRussian(item.date_article)
 
-    console.log('item.id', item.id)
+    const link = `${item.translit}/${item.id}`;
 
-    const link = `${item.translit}/${item.id}`
     return (
         <li className={style.newsItem}>
             <div className={style.newsItem__wrapperImg}>

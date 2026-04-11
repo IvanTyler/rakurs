@@ -4,9 +4,8 @@
     font-weight: 400;
     color: var(--black);
     opacity: 0.5;
-    font-size: clamp(12px, 0.8vw, 14px);
-    line-height: clamp(12px, 1vw, 16px);
-
+    font-size: clamp(14px, 0.8vw, 16px);
+    line-height: clamp(14px, 1vw, 16px);
   }
 
   &:not(:last-child) {
@@ -14,8 +13,8 @@
       content: '/';
       color: var(--black);
       opacity: 0.5;
-      font-size: clamp(12px, 0.8px, 14px);
-      line-height: clamp(12px, 1vw, 16px);
+      font-size: clamp(14px, 0.8vw, 16px);
+      line-height: clamp(14px, 1vw, 16px);
       margin: 0 4px;
     }
   }
