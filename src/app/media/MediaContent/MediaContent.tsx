@@ -14,17 +14,15 @@ export const MediaContent: FC = () => {
 
     return (
         <section className={style.mediaContent}>
-            <ContainerSection className={style.containerMediaContentr}>
-                {tabTypesUrlParamEnum.news === getTabUrlParams
-                    && <RubricsManagementView />
-                }
-                {tabTypesUrlParamEnum.construction === getTabUrlParams
-                    && <div>Динамика строительства</div>
-                }
-                {tabTypesUrlParamEnum.stock === getTabUrlParams
-                    && <div>Акции</div>
-                }
-            </ContainerSection>
+            {tabTypesUrlParamEnum.news === getTabUrlParams
+                && <RubricsManagementView />
+            }
+            {tabTypesUrlParamEnum.construction === getTabUrlParams
+                && <div>Динамика строительства</div>
+            }
+            {tabTypesUrlParamEnum.stock === getTabUrlParams
+                && <div>Акции</div>
+            }
         </section>
     )
 }

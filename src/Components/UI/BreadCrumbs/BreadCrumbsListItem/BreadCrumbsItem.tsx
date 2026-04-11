@@ -10,7 +10,6 @@ interface BreadCrumbsItemProps {
 
 export const BreadCrumbsItem: FC<BreadCrumbsItemProps> = ({item}) => {
 
-    console.log('item.active', item.active)
     return (
         <li className={style.breadCrumbsItem}>
             <Link className={clsx(

@@ -15,7 +15,6 @@ export const RubricsManagementView: FC = () => {
         queryKey: ['rubrics']
     }, queryClient)
 
-
     switch (rubrics.status) {
         case 'pending':
             return <Preloader />

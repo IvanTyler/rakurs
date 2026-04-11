@@ -5,27 +5,39 @@ import {ListItems} from "@/src/Components/List/ListItems";
 import style from './BreadCrumbs.module.scss';
 import {breadCrumbsType} from "@/src/Components/UI/BreadCrumbs/type";
 import {BreadCrumbsItem} from "@/src/Components/UI/BreadCrumbs/BreadCrumbsListItem/BreadCrumbsItem";
-import {usePathname} from "next/navigation";
+import {useParams, usePathname} from "next/navigation";
+import {clsx} from "clsx";
 
 interface BreadCrumbsProps {
-    dataBreadCrumbs: breadCrumbsType[]
+    dataBreadCrumbs: breadCrumbsType[];
+    classBreadCrumbs?: string | undefined;
 }
 
-export const BreadCrumbs: FC<BreadCrumbsProps> = ({dataBreadCrumbs}) => {
+export const BreadCrumbs: FC<BreadCrumbsProps> = (
+    {
+        dataBreadCrumbs,
+        classBreadCrumbs,
+    }
+) => {
 
     const pathname = usePathname();
+    const params = useParams();
+
     const cleanPathname = pathname.replace(/\/$/, '');
+    const comparePath = params.translit
+        ? decodeURIComponent(params.translit)
+        : cleanPathname;
 
     const breadCrumbsData = useMemo(() => {
         return dataBreadCrumbs.map(item => ({
             ...item,
-            active: item.path === cleanPathname,
+            active: item.path === comparePath,
         }));
-    }, [pathname]);
+    }, [dataBreadCrumbs, comparePath]);
 
 
     return (
-        <nav className={style.breadCrumbsNav}>
+        <nav className={clsx(style.breadCrumbsNav, classBreadCrumbs)}>
             <ul className={style.breadCrumbs}>
                 <ListItems
                     items={breadCrumbsData}

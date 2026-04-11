@@ -1,5 +1,5 @@
-import {breadCrumbsType} from "@/src/Components/UI/BreadCrumbs/type";
 import {v4 as uuidv4} from "uuid";
+import {breadCrumbsType} from "@/src/Components/UI/BreadCrumbs/type";
 
 export const breadCrumbsList: breadCrumbsType[] = [
     {
