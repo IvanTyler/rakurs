@@ -33,14 +33,9 @@ export const OtherNews: FC<IOtherNewsListProps> = ({rubrics}) => {
     }, queryClient);
 
 
-    console.log('data', newsData.data)
-
-    console.log('newsData status', newsData.status)
-
     if (newsData.status === 'pending') return <Preloader />
 
     if (newsData.status === 'success') return (
-
         <section className={style.otherNews}>
             <ContainerSection className={style.otherNewsContainer}>
                 <h3 className={style.otherNews__title}>Другие новости</h3>

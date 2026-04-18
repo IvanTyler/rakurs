@@ -62,7 +62,6 @@ const FetchNewsInfo: FC = () => {
 
         const currentDate = getCurrentDateInRussian(dataNews.date_article)
 
-
         return (
             <section className={style.newsDetailed}>
                 <BreadCrumbs

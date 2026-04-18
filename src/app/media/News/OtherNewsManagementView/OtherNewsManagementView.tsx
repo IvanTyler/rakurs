@@ -7,13 +7,11 @@ import {OtherNews} from "@/src/app/media/News/OtherNewsManagementView/OtherNews/
 
 
 export const OtherNewsManagementView: FC = () => {
+
     const rubrics = useQuery({
         queryFn: fetchRubrics,
         queryKey: ['rubrics']
     }, queryClient)
-
-
-    console.log('rubrics.data', rubrics.data)
 
     switch (rubrics.status) {
         case 'pending':
