@@ -11,6 +11,9 @@ import {ContainerSection} from "../../../../Components/UI/Container/ContainerSec
 import {breadCrumbsType} from "@/src/Components/UI/BreadCrumbs/type";
 import {v4 as uuidv4} from "uuid";
 import {BreadCrumbs} from "@/src/Components/UI/BreadCrumbs/BreadCrumbs";
+import {getCurrentDateInRussian} from "../../../../utils/dateInRussian";
+import parse from "html-react-parser";
+import {OtherNewsManagementView} from "@/src/app/media/News/OtherNewsManagementView/OtherNewsManagementView";
 
 
 const FetchNewsInfo: FC = () => {
@@ -28,8 +31,6 @@ const FetchNewsInfo: FC = () => {
 
     const dataNews = submitMutation.data;
 
-    console.log('dataNews', dataNews)
-
     const breadCrumbsList: breadCrumbsType[] = [
         {
             id: uuidv4(),
@@ -43,37 +44,51 @@ const FetchNewsInfo: FC = () => {
             path: dataNews?.translit,
             active: false,
         },
-    ]
+    ];
 
 
     useEffect(() => {
         submitMutation.mutate();
     }, [newsId]);
 
-    console.log('submitMutation.status', submitMutation.status)
-    console.log('breadCrumbsList', breadCrumbsList)
 
     if (submitMutation.isPending) return <Preloader />
     if (submitMutation.isError) return <p>Не удалось загрузить новость</p>
 
     if (submitMutation.status === 'success') {
+
+        const date_article = new Date(dataNews.date_article)
+        const getYear = date_article.getFullYear();
+
+        const currentDate = getCurrentDateInRussian(dataNews.date_article)
+
+
         return (
             <section className={style.newsDetailed}>
-                <div className={style.newsDetailed__wrapperImg}>
-                    <BreadCrumbs
-                        dataBreadCrumbs={breadCrumbsList}
-                        classBreadCrumbs={style.newsDetailed__breadCrumbs}
-                    />
+                <BreadCrumbs
+                    dataBreadCrumbs={breadCrumbsList}
+                    classBreadCrumbs={style.newsDetailed__breadCrumbs}
+                />
+
+                <ContainerSection className={style.containerNewsDetailed}>
+                    <h2 className={style.newsDetailed__title}>
+                        {dataNews.title}
+                    </h2>
+                    <span className={style.newsDetailed__date}>
+                        {currentDate} {getYear}
+                    </span>
                     <img
                         loading='lazy'
-                        src={dataNews?.thumbnail}
-                        alt={dataNews?.title}
-                        className={style.newsDetailed__imgHead}
+                        src={dataNews.thumbnail}
+                        alt={dataNews.title}
+                        className={style.newsDetailed__banner}
                     />
-                </div>
-                <ContainerSection className={style.containerNewsDetailed}>
-
+                    <div className={style.newsDetailed__desc}>
+                        {parse(dataNews.desc)}
+                    </div>
                 </ContainerSection>
+
+                <OtherNewsManagementView />
             </section>
         )
     }
