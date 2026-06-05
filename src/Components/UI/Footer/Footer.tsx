@@ -1,4 +1,3 @@
-import {FC} from "react";
 import style from './Footer.module.scss';
 import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
 import Link from "next/link";
@@ -8,8 +7,12 @@ import Image from "next/image";
 import {SliderNews} from "@/src/app/home/SliderNews/SliderNews";
 import {clsx} from "clsx";
 import {Button} from "@/src/Components/UI/SubmitButton/Button";
+import {fetchSliderMenu} from "@/src/api/SliderMenu";
 
-export const Footer: FC = () => {
+export const Footer = async () => {
+    const data = await fetchSliderMenu();
+    const slides = data.menu.contents.gallery.items;
+
     return (
         <footer className={style.footer}>
             <ContainerSection className={style.containerFooter}>
@@ -54,7 +57,7 @@ export const Footer: FC = () => {
                         </ul>
                     </nav>
 
-                    <SliderNews classNameSlideContainer={style.footer__sliderContainer} />
+                    <SliderNews slides={slides} classNameSlideContainer={style.footer__sliderContainer} />
                 </div>
 
                 <div className={style.footer__right}>

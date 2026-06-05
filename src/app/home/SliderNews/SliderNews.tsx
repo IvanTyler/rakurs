@@ -2,81 +2,56 @@
 
 import {FC} from "react";
 import {Swiper, SwiperSlide} from 'swiper/react';
-import {Pagination} from 'swiper/modules'; // Импортируем модуль пагинации
+import {Pagination} from 'swiper/modules';
 import style from './SliderNews.module.scss';
-import Image from 'next/image';
-
-
-import 'swiper/css'; // Основные стили Swiper
-import 'swiper/css/pagination'; // Стили пагинации
-import {v4 as uuidv4} from "uuid";
+import 'swiper/css';
+import 'swiper/css/pagination';
 import Link from "next/link";
 import {clsx} from "clsx";
-
-type typeApartment = {
-    id: string;
-    discount: string;
-    desc: string;
-}
-
-const dataSlider = Array.from((Array(3))).map((_, i) => {
-    return {
-        id: uuidv4(),
-        discount: `–10 `,
-        desc: `До 4 июня включительно квартиру в жилом проекте Rakurs можно приобрести со скидкой`
-    }
-});
+import {GalleryItemType} from "@/src/api/types/typesSliderMenu";
 
 interface ISliderApartmentDiscount {
+    slides: GalleryItemType[];
     classNameSlideContainer?: string;
     classNameDesc?: string;
     classNameDiscount?: string;
     classNameLink?: string;
 }
 
+const decode = (str: string) => str.replace(/&nbsp;/g, ' ');
 
-export const SliderNews: FC<ISliderApartmentDiscount> = (
-    {
-        classNameSlideContainer,
-        classNameLink,
-        classNameDesc,
-        classNameDiscount
-    }
-) => {
-
+export const SliderNews: FC<ISliderApartmentDiscount> = ({
+    slides,
+    classNameSlideContainer,
+    classNameLink,
+    classNameDesc,
+    classNameDiscount,
+}) => {
     return (
         <div className={clsx(style.sliderContainer, classNameSlideContainer)}>
             <Swiper
                 className={style.sliderNews}
-                // Настройки для показа по одному слайду
                 slidesPerView={1}
                 spaceBetween={5}
-                pagination={{
-                    clickable: true, // Можно кликать на точки
-                    dynamicBullets: false, // Обычные точки
-                }}
-                // Подключаем модули
+                pagination={{clickable: true, dynamicBullets: false}}
                 modules={[Pagination]}
-                speed={500} // Скорость анимации
+                speed={500}
             >
-                {dataSlider.map((slide: typeApartment) => (
+                {slides.map((slide: GalleryItemType) => (
                     <SwiperSlide className={style.sliderNews__slide} key={slide.id}>
-                        <Link className={clsx(classNameLink, style.sliderNews__link)} href={''}>
-                            {/*<Image className={style.SliderNews__bg} src={rectangleIcon} />*/}
-                            <div className={style.sliderNews__leftTop}></div>
+                        <Link className={clsx(classNameLink, style.sliderNews__link)} href={slide.link || ''}>
                             <span className={clsx(classNameDiscount, style.sliderNews__discount)}>
-                                {slide.discount}% <br/>
-                                на квартиры
+                                {decode(slide.title)}
                             </span>
-                            <div className={style.sliderNews__rightTop}></div>
-                            <p className={clsx(classNameDesc, style.sliderNews__desc)}>
-                                {slide.desc}
-                            </p>
-                            <div className={style.sliderNews__rightBottom}></div>
+                            {slide.desc && (
+                                <p className={clsx(classNameDesc, style.sliderNews__desc)}>
+                                    {decode(slide.desc)}
+                                </p>
+                            )}
                         </Link>
                     </SwiperSlide>
                 ))}
             </Swiper>
         </div>
-    )
-}
+    );
+};

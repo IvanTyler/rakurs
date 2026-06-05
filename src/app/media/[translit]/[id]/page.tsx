@@ -19,6 +19,8 @@ import {OtherNewsManagementView} from "@/src/app/media/News/OtherNewsManagementV
 const FetchNewsInfo: FC = () => {
 
     const params = useParams();
+
+    console.log('params', params)
     const newsId = params.id as number;
 
     const submitMutation = useMutation({
