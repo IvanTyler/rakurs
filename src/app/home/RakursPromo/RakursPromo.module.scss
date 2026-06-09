@@ -24,6 +24,7 @@
 
     @media (max-width: 720px) {
       grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr auto;
       grid-template-areas:
         'title'
         'centerBlock'
