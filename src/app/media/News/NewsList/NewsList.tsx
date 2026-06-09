@@ -1,4 +1,5 @@
 import {FC} from "react";
+import type SwiperClass from 'swiper';
 import style from './NewsList.module.scss'
 import {NewsType} from "@/src/api/types/news";
 import {ListItems} from "@/src/Components/List/ListItems";
@@ -8,9 +9,10 @@ import {Swiper, SwiperSlide} from "swiper/react";
 interface NewsListProps {
     news: NewsType[];
     isSlider?: boolean;
+    onSwiperReady?: (swiper: SwiperClass) => void;
 }
 
-export const NewsList: FC<NewsListProps> = ({news, isSlider}) => {
+export const NewsList: FC<NewsListProps> = ({news, isSlider, onSwiperReady}) => {
 
     if (isSlider) {
         return (
@@ -19,6 +21,7 @@ export const NewsList: FC<NewsListProps> = ({news, isSlider}) => {
                 spaceBetween={16}
                 speed={500}
                 grabCursor={true}
+                onSwiper={onSwiperReady}
                 className={style.newsList}
             >
                 {news.map((slide: NewsType) => (

@@ -1,4 +1,7 @@
-import {FC} from "react";
+'use client'
+
+import {FC, useState} from "react";
+import type SwiperClass from 'swiper';
 import {rubricsResponseType} from "@/src/api/types/typesRubrics";
 import {NewsList} from "@/src/app/media/News/NewsList/NewsList";
 import {useQuery} from "@tanstack/react-query";
@@ -13,6 +16,8 @@ interface IOtherNewsListProps {
 }
 
 export const OtherNews: FC<IOtherNewsListProps> = ({rubrics}) => {
+
+    const [swiper, setSwiper] = useState<SwiperClass | null>(null);
 
     const getIdNews = rubrics.rubrics?.find(news => news.code === "news");
     const LIMIT = 16;
@@ -36,8 +41,26 @@ export const OtherNews: FC<IOtherNewsListProps> = ({rubrics}) => {
     if (newsData.status === 'success') return (
         <section className={style.otherNews}>
             <ContainerSection className={style.otherNewsContainer}>
-                <h3 className={style.otherNews__title}>Другие новости</h3>
-                <NewsList news={newsData.data.articles} isSlider={true}/>
+                <div className={style.otherNews__header}>
+                    <h3 className={style.otherNews__title}>Другие новости</h3>
+                    <div className={style.otherNews__nav}>
+                        <button
+                            className={style.otherNews__arrow}
+                            onClick={() => swiper?.slidePrev()}
+                            aria-label="Назад"
+                        >
+                            <img src="/icons/arrow-black.svg" alt="" />
+                        </button>
+                        <button
+                            className={`${style.otherNews__arrow} ${style.otherNews__arrow_next}`}
+                            onClick={() => swiper?.slideNext()}
+                            aria-label="Вперёд"
+                        >
+                            <img src="/icons/arrow-black.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+                <NewsList news={newsData.data.articles} isSlider={true} onSwiperReady={setSwiper} />
             </ContainerSection>
         </section>
     )
