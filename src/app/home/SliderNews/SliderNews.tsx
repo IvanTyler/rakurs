@@ -40,14 +40,17 @@ export const SliderNews: FC<ISliderApartmentDiscount> = ({
                 {slides.map((slide: GalleryItemType) => (
                     <SwiperSlide className={style.sliderNews__slide} key={slide.id}>
                         <Link className={clsx(classNameLink, style.sliderNews__link)} href={slide.link || ''}>
+                            <div className={style.sliderNews__leftTop}></div>
                             <span className={clsx(classNameDiscount, style.sliderNews__discount)}>
                                 {decode(slide.title)}
                             </span>
+                            <div className={style.sliderNews__rightTop}></div>
                             {slide.desc && (
                                 <p className={clsx(classNameDesc, style.sliderNews__desc)}>
                                     {decode(slide.desc)}
                                 </p>
                             )}
+                            <div className={style.sliderNews__rightBottom}></div>
                         </Link>
                     </SwiperSlide>
                 ))}

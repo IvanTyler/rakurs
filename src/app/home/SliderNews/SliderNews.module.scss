@@ -1,16 +1,26 @@
 .sliderContainer {
   grid-area: slider;
-  // width drives height through aspect-ratio — no explicit height needed
-  width: clamp(277px, 36.6vw, 704px);
-  aspect-ratio: 704 / 212;
+  max-width: 704px;
+  height: clamp(112px, 20vw, 212px);
 
-  @media (max-width: 970px) {
-    width: clamp(200px, 40vw, 460px);
-    aspect-ratio: 277 / 150;
+  @media (max-width: 1800px) {
+    max-width: 528px;
+    height: 159px;
   }
 
-  @media (max-width: 600px) {
-    width: clamp(277px, 88vw, 393px);
+  @media (max-width: 1380px) {
+    max-width: 372px;
+    height: 112px;
+  }
+
+  @media (max-width: 970px) {
+    max-width: 277px;
+    height: 150px;
+  }
+
+  @media (max-width: 450px) {
+    max-width: 305px;
+    height: 102px;
   }
 
   .sliderNews {
@@ -23,38 +33,67 @@
     }
 
     &__link {
-      display: flex;
-      flex-direction: column;
+      display: grid !important;
+      grid-template-columns: minmax(auto, 228px) 1fr minmax(auto, 123px);
+      grid-template-areas:
+        'leftTop discount rightTop'
+        'desc desc rightBottom';
       height: 100%;
-      padding: clamp(8px, 4.5%, 18px) clamp(8px, 7%, 16px);
+      padding: clamp(8px, 1vw, 12px);
       background-image: url("../../../assets/images/first-display/rectangle.svg");
       background-size: 100% 100%;
       background-repeat: no-repeat;
 
-      // at 970px the shape changes — use the narrower SVG variant
+      @media (max-width: 1800px) {
+        grid-template-columns: minmax(auto, 170px) 1fr minmax(auto, 80px);
+      }
+
+      @media (max-width: 1380px) {
+        grid-template-columns: minmax(auto, 115px) 1fr minmax(auto, 52px);
+      }
+
       @media (max-width: 970px) {
+        grid-template-columns: minmax(auto, 94px) 1fr minmax(auto, 77px);
         background-image: url("../../../assets/images/first-display/rectangle-1024.svg");
+      }
+
+      @media (max-width: 720px) {
+        grid-template-columns: minmax(auto, 127px) 1fr minmax(auto, 67px);
+      }
+
+      @media (max-width: 450px) {
+        grid-template-columns: minmax(auto, 99px) 1fr minmax(auto, 46px);
       }
     }
 
+    &__leftTop {
+      grid-area: leftTop;
+    }
+
     &__discount {
-      // 35% margin clears the top-left notch for both SVG shapes:
-      // desktop notch ends at 32.2% of width, mobile at 34.5%
-      margin-left: 35%;
+      grid-area: discount;
       font-family: var(--main-font);
-      font-size: clamp(12px, 1.3vw, 24px);
+      font-size: clamp(12px, 1.6vw, 24px);
       line-height: 1.1;
       color: var(--lightBlack);
     }
 
+    &__rightTop {
+      grid-area: rightTop;
+    }
+
     &__desc {
-      margin-top: auto;
-      // 75% max-width keeps desc clear of the bottom-right notch
-      max-width: 75%;
+      grid-area: desc;
+      grid-column: 1 / span 2;
+      align-self: end;
       font-family: var(--main-font);
-      font-size: clamp(12px, 1.3vw, 24px);
+      font-size: clamp(12px, 1.6vw, 24px);
       line-height: 1.1;
       color: var(--lightBlack);
+    }
+
+    &__rightBottom {
+      grid-area: rightBottom;
     }
   }
 
