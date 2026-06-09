@@ -1,6 +1,6 @@
 'use client'
 
-import {FC, useRef, useState} from "react";
+import {FC, useState} from "react";
 import style from './FormFeedback.module.scss';
 import {Button} from "@/src/Components/UI/SubmitButton/Button";
 import {useForm} from "react-hook-form";
@@ -61,15 +61,13 @@ export const FormFeedback: FC<IFormFeedbackProps> = ({classNameForm}) => {
     const questionFormMutation = useMutation({
         mutationFn: questionForm,
         onSuccess: () => {
-            console.log('Форма успешно отправлена');
             setIsSuccessMessage(true);
             reset();
             setTimeout(() => setIsSuccessMessage(false), 4000)
         },
-        onError: (error) => {
+        onError: () => {
             setIsErrorMessage(true)
             setTimeout(() => setIsErrorMessage(false), 4000)
-            console.error('Ошибка мутации:', error);
         }
     }, queryClient);
 

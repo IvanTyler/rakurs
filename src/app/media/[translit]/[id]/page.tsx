@@ -20,14 +20,11 @@ const FetchNewsInfo: FC = () => {
 
     const params = useParams();
 
-    console.log('params', params)
     const newsId = Number(params.id);
 
     const submitMutation = useMutation({
         mutationFn: () => fetchNewsInfo(newsId),
-        onError: (error) => {
-            console.log('Error submitting entry info data new:', error)
-        }
+        onError: () => {}
     }, queryClient);
 
 

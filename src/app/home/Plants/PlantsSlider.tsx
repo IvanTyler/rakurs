@@ -5,10 +5,11 @@ import {FC} from "react";
 import style from "./Plants.module.scss";
 import {Pagination} from "swiper/modules";
 import {Swiper, SwiperSlide} from "swiper/react";
+import {plantsType} from "@/src/app/types/plantsTerritoryType";
 
 
 interface IPlantsProps {
-    item: any[];
+    item: plantsType[];
 }
 
 export const PlantsSlider: FC<IPlantsProps> = ({item}) => {
@@ -19,12 +20,11 @@ export const PlantsSlider: FC<IPlantsProps> = ({item}) => {
             slidesPerView={4}
 
             pagination={{
-                clickable: true, // Можно кликать на точки
-                dynamicBullets: false, // Обычные точки
+                clickable: true,
+                dynamicBullets: false,
             }}
-            // Подключаем модули
             modules={[Pagination]}
-            speed={500} // Скорость анимации
+            speed={500}
 
             breakpoints={{
                 0: {
@@ -40,7 +40,7 @@ export const PlantsSlider: FC<IPlantsProps> = ({item}) => {
                 }
             }}
         >
-            {item.map((slide: any) => (
+            {item.map((slide: plantsType) => (
                 <SwiperSlide className={style.sliderMobile__slide} key={slide.id}>
                     <figure className={style.sliderMobile__figure}>
                         <img className={style.sliderMobile__img} loading='lazy' src={slide.path}

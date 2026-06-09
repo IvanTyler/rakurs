@@ -6,7 +6,7 @@ import parse from "html-react-parser";
 
 interface IDescSection {
     desc: string | undefined;
-    prevDesc?: any | undefined;
+    prevDesc?: string | undefined;
     className?: string | undefined;
     shouldAnimate?: boolean;
 }

@@ -9,7 +9,7 @@ import {clsx} from "clsx";
 interface IContentTabs {
     tabs: ContentTabsType[];
     className: string;
-    getTabId: (item: any) => void;
+    getTabId: (id: string) => void;
     isShowDesc?: boolean
 }
 

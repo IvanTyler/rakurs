@@ -8,8 +8,8 @@ import {Icon} from "@/src/Components/UI/Icon/Icon";
 
 interface ISelectionCorpsProps {
     className?: string;
-    item: any[];
-    activeItem: any;
+    item: selectionItemType[];
+    activeItem: selectionItemType;
     setActiveItem: (item: string) => void;
     isMobileSelect?: boolean,
 }
@@ -44,7 +44,7 @@ export const SelectionItem: FC<ISelectionCorpsProps> = (
             <div className={clsx(style.selectionItem__wrapper, toggleState && isMobileSelect && style.open)}>
                 <ListItems
                     items={item}
-                    renderItem={(item: any) => (
+                    renderItem={(item: selectionItemType) => (
 
                         <div onClick={() => setActiveItem(item.id)}
 

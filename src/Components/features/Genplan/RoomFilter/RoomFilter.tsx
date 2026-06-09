@@ -3,9 +3,14 @@ import {v4 as uuidv4} from "uuid";
 import style from './RoomFilter.module.scss'
 import {clsx} from "clsx";
 
+interface RoomFilterItem {
+    id: string;
+    rooms: number;
+}
+
 interface IRoomFilterProps {
-    selectedRooms: any[];
-    setSelectedRooms: (room: any) => void
+    selectedRooms: number[];
+    setSelectedRooms: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export const RoomFilter: FC<IRoomFilterProps> = (
@@ -15,30 +20,17 @@ export const RoomFilter: FC<IRoomFilterProps> = (
     }
 ) => {
 
-    const roomFilterSelect = [
-        {
-            id: uuidv4(),
-            rooms: 1,
-        },
-        {
-            id: uuidv4(),
-            rooms: 2,
-        },
-        {
-            id: uuidv4(),
-            rooms: 3,
-        },
-        {
-            id: uuidv4(),
-            rooms: 4,
-        },
+    const roomFilterSelect: RoomFilterItem[] = [
+        { id: uuidv4(), rooms: 1 },
+        { id: uuidv4(), rooms: 2 },
+        { id: uuidv4(), rooms: 3 },
+        { id: uuidv4(), rooms: 4 },
     ];
 
-
-    const selectedRoomsFunc = (room: any) => {
-        setSelectedRooms((prev: any) => {
+    const selectedRoomsFunc = (room: number) => {
+        setSelectedRooms((prev: number[]) => {
             if (prev.includes(room)) {
-                return prev.filter((r: string) => r !== room)
+                return prev.filter((r: number) => r !== room)
             } else {
                 return [...prev, room]
             }
@@ -58,7 +50,7 @@ export const RoomFilter: FC<IRoomFilterProps> = (
                 <div className={clsx(style.roomFilterList__item)} onClick={() => resetRooms()}>
                     Любое
                 </div>
-                {roomFilterSelect.map((el: any) =>
+                {roomFilterSelect.map((el: RoomFilterItem) =>
                     <div
                         key={el.id}
                         onClick={() => selectedRoomsFunc(el.rooms)}

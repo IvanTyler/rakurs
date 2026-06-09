@@ -6,7 +6,7 @@ import {clsx} from "clsx";
 interface ISectionTitleProps {
     classNameTitle?: string;
     classNameUnderlined?: string;
-    textUnderlined?: any;
+    textUnderlined?: string;
     isDots?: boolean;
     children: React.ReactNode;
     isUnderlinedTitle?: boolean;
@@ -26,7 +26,7 @@ export const SectionTitle: FC<ISectionTitleProps> = (
         <h2 className={clsx(style.sectionTitle, classNameTitle)}>
             {isUnderlinedTitle && <UnderlinedTitle
                 className={classNameUnderlined}
-                text={textUnderlined}
+                text={textUnderlined ?? ''}
                 isDots={isDots}
             />}
             {children}

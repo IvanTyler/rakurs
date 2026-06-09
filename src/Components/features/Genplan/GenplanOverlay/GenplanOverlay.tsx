@@ -3,10 +3,11 @@
 import {FC, useState, useEffect} from "react";
 import style from "./GenplanOverlay.module.scss";
 import {clsx} from "clsx";
+import {SvgItemType} from "@/src/Components/features/Genplan/dataSvg";
 
 interface IGenplanOverlayProps {
-    widthWindowSize?: number | any,
-    dataSvg: any[],
+    widthWindowSize?: number,
+    dataSvg: SvgItemType[],
     hoveredCode: string | null,
     selectedCorps: string | null,
     setHoveredCode?: (code: string | null) => void,
@@ -60,7 +61,7 @@ export const GenplanOverlay: FC<IGenplanOverlayProps> = (
                         )}
 
                         onMouseEnter={!isMobile && mode === 'corps' && setHoveredCode
-                            ? () => setHoveredCode(el.code)
+                            ? () => setHoveredCode(el.code ?? null)
                             : undefined
                         }
 
@@ -72,12 +73,12 @@ export const GenplanOverlay: FC<IGenplanOverlayProps> = (
                         onClick={() => {
                             if (isMobile && mode === 'corps' && setHoveredCode) {
                                 if (hoveredCode === el.code) {
-                                    onCorpsClick(el.code);
+                                    onCorpsClick(el.code ?? '');
                                 } else {
-                                    setHoveredCode(el.code);
+                                    setHoveredCode(el.code ?? null);
                                 }
                             } else {
-                                onCorpsClick(el.code);
+                                onCorpsClick(el.code ?? '');
                             }
                         }}
                     />

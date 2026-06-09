@@ -17,8 +17,6 @@ export const OtherNews: FC<IOtherNewsListProps> = ({rubrics}) => {
     const getIdNews = rubrics.rubrics?.find(news => news.code === "news");
     const LIMIT = 16;
 
-    console.log('getIdNews', getIdNews)
-
     const newsData = useQuery({
         queryKey: ['news', getIdNews],
         queryFn: () => {

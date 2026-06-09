@@ -11,5 +11,5 @@ export type plantsTerritoryType = {
     title: string;
     desc: string;
     active: boolean;
-    plants: plantsType[];
+    data?: plantsType[];
 }

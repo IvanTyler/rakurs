@@ -6,7 +6,7 @@ import {imagesType} from "@/src/app/types/improvement";
 import {clsx} from "clsx";
 
 interface IImagesSliderProps {
-    slidesPerView?: any;
+    slidesPerView?: number | 'auto';
     classNameSlider?: string;
     classNameDesc?: string;
     classNameDate?: string;

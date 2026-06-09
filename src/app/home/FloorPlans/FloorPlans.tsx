@@ -15,7 +15,7 @@ export const FloorsPlans: FC = () => {
     const [dataTabs, setDataTabs] = useState<ContentTabsType[]>(dataFloorPlans);
 
     const getIdActiveTab = (id: string) => {
-        setDataTabs(prev => prev.map((item: any) => {
+        setDataTabs(prev => prev.map((item: ContentTabsType) => {
             return {
                 ...item,
                 active: item.id === id,

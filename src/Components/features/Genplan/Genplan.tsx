@@ -30,10 +30,10 @@ import {dataSvg} from "@/src/Components/features/Genplan/dataSvg";
 export const Genplan: FC = () => {
 
     const [hoveredCode, setHoveredCode] = useState<string | null>(null);
-    const [selectedCorps, setSelectedCorps] = useState<string | null | any>(null);
+    const [selectedCorps, setSelectedCorps] = useState<string | null>(null);
     const [mode, setMode] = useState<'corps' | 'floors'>('corps');
 
-    const [selectedRooms, setSelectedRooms] = useState<any[]>([]);
+    const [selectedRooms, setSelectedRooms] = useState<number[]>([]);
 
     const [isScrollbar, setIsScrollbar] = useState(false);
 
@@ -71,7 +71,7 @@ export const Genplan: FC = () => {
 
 
 
-    const mutateDataSvg = dataSvg.map((el: any, i: number) => ({
+    const mutateDataSvg = dataSvg.map((el, i: number) => ({
         ...el,
         code: generalGenplan[i]?.code,
         numCorps: generalGenplan[i]?.title,
@@ -82,11 +82,7 @@ export const Genplan: FC = () => {
     const houseTotalsData = useQuery({
         queryFn: async () => {
             const id = mode === 'corps' ? hoveredCode : selectedCorps;
-            console.log('houseTotals queryFn called with id:', id); // для отладки
-            if (!id) {
-                console.log('Skipping fetch - no id');
-                return null;
-            }
+            if (!id) return null;
             return fetchHouseTotals(id);
         },
         queryKey: ['houseTotals', mode === 'corps' ? hoveredCode : selectedCorps],
@@ -110,19 +106,13 @@ export const Genplan: FC = () => {
         return GenplanData.data.blocks.select_floor.contents[selectedCorps].value;
     }, [selectedCorps, GenplanData.data]);
 
-    console.log('floorData', floorData)
-
     const houseFloorsData = useQuery({
         queryFn: async () => {
-            // Добавьте эту проверку
-            if (!selectedCorps) {
-                console.log('Skipping houseFloors - no selectedCorps');
-                return null;
-            }
+            if (!selectedCorps) return null;
             return fetchHouseFloors(selectedCorps);
         },
         queryKey: ['houseFloors', selectedCorps],
-        enabled: !!(mode === 'floors' && selectedCorps), // Добавьте enabled
+        enabled: !!(mode === 'floors' && selectedCorps),
         staleTime: Infinity,
     }, queryClient);
 
@@ -148,7 +138,7 @@ export const Genplan: FC = () => {
                     <Image className={style.genplan__img} src={imgGenplan} alt={'genplan'}/>
                 </picture>
 
-                {houseFloorsData.status === 'success' && houseFloorsData.data &&
+                {houseFloorsData.status === 'success' && houseFloorsData.data && selectedCorps &&
 					<FloorPlan
 						codeCorps={selectedCorps}
 						houseFloorsData={houseFloorsData.data}

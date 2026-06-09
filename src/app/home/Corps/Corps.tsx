@@ -13,7 +13,7 @@ import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
 export const Corps: FC = () => {
 
-    const [corpsState, setCorpsState] = useState<any[]>(selectCorpsData);
+    const [corpsState, setCorpsState] = useState<selectionItemType[]>(selectCorpsData);
 
     const setActiveCorps = (id: string) => {
         setCorpsState(prev => prev.map(item => ({

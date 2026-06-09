@@ -3,12 +3,13 @@ import style from './CorpsSummary.module.scss';
 import {plural} from "@/src/utils/Pluar";
 import {formatPrice} from "@/src/utils/FormatPrice";
 import {formatQuarterYear} from "@/src/utils/FormatQuarterYear";
+import {houseTotalsResponse} from "@/src/api/types/typesGenplan";
 
 
 interface ICorpsSummaryProps {
-    data: any;
-    countFloors: number;
-    minPrice: any | undefined;
+    data: houseTotalsResponse | null | false;
+    countFloors: number | undefined;
+    minPrice: number | undefined;
 }
 
 export const CorpsSummary: FC<ICorpsSummaryProps> = (
@@ -29,7 +30,7 @@ export const CorpsSummary: FC<ICorpsSummaryProps> = (
 
 				<div className={style.corpsSummary__item}>
 					<dt className={style.corpsSummary__term}>Этажность</dt>
-					<dd className={style.corpsSummary__desc}>{countFloors} {plural(countFloors, ['этаж', 'этажа', 'этажей'])}</dd>
+					<dd className={style.corpsSummary__desc}>{countFloors} {plural(countFloors ?? 0, ['этаж', 'этажа', 'этажей'])}</dd>
 				</div>
 
 				<div className={style.corpsSummary__item}>
@@ -44,7 +45,7 @@ export const CorpsSummary: FC<ICorpsSummaryProps> = (
 
 				<div className={style.corpsSummary__item}>
 					<dt className={style.corpsSummary__term}>Цены</dt>
-					<dd className={style.corpsSummary__desc}>{formatPrice(minPrice)}</dd>
+					<dd className={style.corpsSummary__desc}>{minPrice !== undefined ? formatPrice(minPrice) : ''}</dd>
 				</div>
 
 			</div>}

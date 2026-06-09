@@ -19,7 +19,7 @@ export const TerraceSilence: FC = () => {
     const [placeTerraceSilence, setPlaceTerraceSilence] = useState<accordionType[]>(dataTerraceSilence);
 
     const getIdActiveTab = (id: string) => {
-        setPlaceTerraceSilence(prev => prev.map((item: any) => {
+        setPlaceTerraceSilence(prev => prev.map((item: accordionType) => {
             return {
                 ...item,
                 active: item.id === id,

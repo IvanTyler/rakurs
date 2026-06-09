@@ -2,7 +2,7 @@
 
 import {FC, useEffect, useRef, useState} from "react";
 import style from './TabsAccordionItem.module.scss'
-import {plantsTerritoryType} from "@/src/app/types/plantsTerritoryType";
+import {plantsTerritoryType, plantsType} from "@/src/app/types/plantsTerritoryType";
 import {clsx} from "clsx";
 import {Plants} from "@/src/app/home/Plants/Plants";
 import {PlantsSlider} from "@/src/app/home/Plants/PlantsSlider";
@@ -10,8 +10,8 @@ import parse from 'html-react-parser';
 
 interface TabsAccordionItem {
     className?: string;
-    item: any;
-    getIdTab: (item: any) => void;
+    item: plantsTerritoryType;
+    getIdTab: (id: string) => void;
     isShowSlide?: boolean;
 }
 
@@ -34,16 +34,14 @@ export const TabsAccordionItem: FC<TabsAccordionItem> = (
             setContentHeight(height);
         };
 
-        // Инициализация
         updateHeight();
 
-        // Слушаем ресайз
         window.addEventListener('resize', updateHeight);
 
         return () => {
             window.removeEventListener('resize', updateHeight);
         };
-    }, [item.active]); // Следим за изменением active
+    }, [item.active]);
 
 
     return (
@@ -70,8 +68,8 @@ export const TabsAccordionItem: FC<TabsAccordionItem> = (
                     {parse(item.desc)}
                 </div>
 
-                {!isShowSlide && item.data && <Plants item={item.data}/>}
-                {isShowSlide && item.data && <PlantsSlider item={item.data}/>}
+                {!isShowSlide && item.data && <Plants item={item.data as plantsType[]}/>}
+                {isShowSlide && item.data && <PlantsSlider item={item.data as plantsType[]}/>}
             </div>
 
 

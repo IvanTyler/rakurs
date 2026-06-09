@@ -5,10 +5,11 @@ import style from './TabsAccordion.module.scss';
 import {ListItems} from "@/src/Components/List/ListItems";
 import {TabsAccordionItem} from "@/src/Components/UI/TabsAccordionItem/TabsAccordionItem";
 import {clsx} from "clsx";
+import {plantsTerritoryType} from "@/src/app/types/plantsTerritoryType";
 
 
 interface ITabsAccordion {
-    dataTabs: any[];
+    dataTabs: plantsTerritoryType[];
     className?: string;
     classNameAccordionItem?: string;
     isShowSlide?: boolean
@@ -23,7 +24,7 @@ export const TabsAccordion: FC<ITabsAccordion> = (
     }
 ) => {
 
-    const [tabs, setTabs] = useState(dataTabs);
+    const [tabs, setTabs] = useState<plantsTerritoryType[]>(dataTabs);
 
     const getIdActiveTab = (id: string) => {
         setTabs(prev => prev.map(item => ({
@@ -37,7 +38,7 @@ export const TabsAccordion: FC<ITabsAccordion> = (
         <ul className={clsx(style.tabsAccordion, className)}>
             <ListItems
                 items={tabs}
-                renderItem={(item: any) =>
+                renderItem={(item: plantsTerritoryType) =>
                     <TabsAccordionItem
                         key={item.id}
                         item={item}

@@ -11,7 +11,7 @@ import {PointsInterestItem} from "@/src/app/home/PointsInterest/PointsInterestIt
 
 export const PointsInterest: FC = () => {
 
-    const [apartmentState, setApartmentState] = useState<any[]>(selectPointsApartmentsData);
+    const [apartmentState, setApartmentState] = useState<selectionItemType[]>(selectPointsApartmentsData);
 
     const setActivePoints = (id: string) => {
         setApartmentState(prev => prev.map(item => ({

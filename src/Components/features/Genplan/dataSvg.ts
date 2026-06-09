@@ -1,6 +1,14 @@
 import {v4 as uuidv4} from "uuid";
 
-export const dataSvg = [
+export type SvgItemType = {
+    id: string;
+    active: boolean;
+    name: string;
+    code?: string;
+    numCorps?: string;
+}
+
+export const dataSvg: SvgItemType[] = [
     {
         id: uuidv4(),
         active: true,

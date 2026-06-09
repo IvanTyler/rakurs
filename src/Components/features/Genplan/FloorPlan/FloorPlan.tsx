@@ -8,16 +8,23 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Navigation} from "swiper/modules";
 import {useQuery} from "@tanstack/react-query";
 import {queryClient} from "@/src/api/queryClient";
-import {filterFloorsType, generalPlanType, HouseFloorsType, pointsType} from "@/src/api/types/typesGenplan";
+import {filterFloorsType, HouseFloorsType, pointsType} from "@/src/api/types/typesGenplan";
 import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 import {InfoCardBuild} from "@/src/Components/features/Genplan/InfoCardBuild/InfoCardBuild";
+import type SwiperClass from 'swiper';
 
+type PolygonCoordinates = {
+    scaleX: number;
+    scaleY: number;
+    offsetX: number;
+    offsetY: number;
+}
 
 interface IFloorPlanProps {
     codeCorps: string
     houseFloorsData: HouseFloorsType;
     floorData: filterFloorsType;
-    rooms: any[];
+    rooms: number[];
     mode: 'corps' | 'floors';
 }
 
@@ -31,21 +38,21 @@ export const FloorPlan: FC<IFloorPlanProps> = (
     }
 ) => {
 
-    const [floorState, setFloorState] = useState<string | any>(null);
+    const [floorState, setFloorState] = useState<string | null>(null);
     const [cardPosition, setCardPosition] = useState<{ top: number; left: number } | null>(null);
     const [activeFloor, setActiveFloor] = useState<string | null>(null);
 
-    const [swiperInstance, setSwiperInstance] = useState<any>(null);
+    const [swiperInstance, setSwiperInstance] = useState<SwiperClass | null>(null);
 
     const svgRef = useRef<SVGSVGElement>(null);
     const polygonRefs = useRef<Map<string, SVGPolygonElement>>(new Map());
 
     const {widthWindow} = useWindowWidth(980)
 
-    const isShowSlider: any = widthWindow <= 980;
+    const isShowSlider: boolean = widthWindow <= 980;
 
 
-    const positionInfoCardBuildFunc = () => {
+    const positionInfoCardBuildFunc = (): number => {
         if (widthWindow <= 780) return -60;
         if (widthWindow <= 980) return -55;
         if (widthWindow <= 1080) return -50;
@@ -53,32 +60,27 @@ export const FloorPlan: FC<IFloorPlanProps> = (
         return 20;
     }
 
-    const positionInfoCardBuild: any = positionInfoCardBuildFunc();
+    const positionInfoCardBuild: number = positionInfoCardBuildFunc();
 
 
-    // Функция для показа карточки этажа
     const showFloorCard = (floorCode: string) => {
-        // Получаем polygon элемент по коду этажа
         const polygonElement = polygonRefs.current.get(floorCode);
 
         if (polygonElement && svgRef.current) {
             const rect = polygonElement.getBoundingClientRect();
             const svgRect = svgRef.current.getBoundingClientRect();
 
-            // Устанавливаем позицию карточки
             setCardPosition({
                 left: rect.right - svgRect.left + positionInfoCardBuild,
                 top: rect.top - svgRect.top - 20,
             });
 
-            // Устанавливаем данные этажа
             setFloorState(floorCode);
             setActiveFloor(floorCode);
         }
     };
 
 
-    // Функция для показа карточки этажа при наведении на полигон
     const handlePolygonHover = (
         event: React.MouseEvent<SVGPolygonElement>,
         code: string,
@@ -104,13 +106,10 @@ export const FloorPlan: FC<IFloorPlanProps> = (
 
     const handlePolygonHide = () => {
         setActiveFloor(null);
-
-        // А карточку скрываем
         setFloorState(null);
         setCardPosition(null);
     };
 
-    // Обработчик клика по слайду
     const handleFloorClick = (floorCode: string, index: number) => {
         if (swiperInstance) {
             swiperInstance.slideTo(index);
@@ -118,8 +117,7 @@ export const FloorPlan: FC<IFloorPlanProps> = (
         showFloorCard(floorCode);
     };
 
-    // Обработчик изменения слайда
-    const handleSlideChange = (swiper: any) => {
+    const handleSlideChange = (swiper: SwiperClass) => {
         const activeSlide = swiper.slides[swiper.activeIndex];
         if (activeSlide) {
             const floorCode = activeSlide.textContent;
@@ -142,8 +140,8 @@ export const FloorPlan: FC<IFloorPlanProps> = (
 
     const filtersFloorsByRooms = filtersFloorsByRoom();
 
-    const coordinatesAdaptivePolygonsFunc = () => {
-        const dataСoordinatesPolygons: any = {
+    const coordinatesAdaptivePolygonsFunc = (): Record<string, PolygonCoordinates> => {
+        const dataСoordinatesPolygons: Record<string, PolygonCoordinates> = {
             1183: {
                 scaleX: 0.89,
                 scaleY: 0.85,
@@ -164,7 +162,7 @@ export const FloorPlan: FC<IFloorPlanProps> = (
             }
         }
 
-        const dataСoordinatesPolygons780: any = {
+        const dataСoordinatesPolygons780: Record<string, PolygonCoordinates> = {
             1183: {
                 scaleX: 1.48,
                 scaleY: 0.7,
@@ -191,13 +189,10 @@ export const FloorPlan: FC<IFloorPlanProps> = (
 
     const coordinatesPolygons = coordinatesAdaptivePolygonsFunc()
 
-    console.log('floorData', floorData)
-
     const newDataPoints = useMemo(() => {
         if (!floorData?.points || !houseFloorsData) return [];
 
         return floorData.points
-            // type predicate
             .filter((point): point is pointsType => Boolean(point))
             .map((point: pointsType) => {
                 const scaleX = coordinatesPolygons[codeCorps]?.scaleX;
@@ -206,7 +201,7 @@ export const FloorPlan: FC<IFloorPlanProps> = (
                 const offsetY = coordinatesPolygons[codeCorps]?.offsetY;
 
                 const split = point.polygon.split(' ');
-                const newSplit = split.map((item: any, index: number) => {
+                const newSplit = split.map((item: string, index: number) => {
                     const num = parseFloat(item);
                     if (index % 2 === 0) {
                         return (num * scaleX + offsetX).toFixed(2);
@@ -267,7 +262,7 @@ export const FloorPlan: FC<IFloorPlanProps> = (
 						modules={[Navigation]}
 						className={style.floorSlider}
 					>
-                        {newDataPoints.map((el: any, index: number) => (
+                        {newDataPoints.map((el: pointsType, index: number) => (
                             <SwiperSlide
                                 key={el.code}
                                 className={clsx(
@@ -295,7 +290,7 @@ export const FloorPlan: FC<IFloorPlanProps> = (
                 preserveAspectRatio="none"
             >
                 {floorData && newDataPoints.length ?
-                    newDataPoints.map((point: any, index: number) => {
+                    newDataPoints.map((point: pointsType, index: number) => {
                         if (point !== null) {
                             return <polygon
                                 ref={(el) => {

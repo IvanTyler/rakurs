@@ -1,11 +1,11 @@
 import {FC} from "react";
 import style from './AccordionItem.module.scss'
 import {clsx} from "clsx";
-import {accordionType} from "@/src/app/types/terraceSilence";
+import {accordionItemType} from "@/src/app/types/selectionCorps";
 
 interface IAccordionItemProps {
     claasName?: string;
-    item: accordionType;
+    item: accordionItemType;
     isContent?: boolean;
     getId: (item: string) => void;
 }

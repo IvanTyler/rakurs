@@ -44,30 +44,27 @@ export async function fetchHouseFloors(id_house: string) {
 }
 
 export async function fetchHouseFloorsFilterRooms(id_house: string, rooms: number[]) {
-    const baseUrl = `${Host}/houseFloors/${id_house}`;
+    const params = new URLSearchParams();
+    rooms.forEach(room => params.append('rooms[]', room.toString()));
 
-    const url = new URL(baseUrl);
-
-    // Добавляем каждый room как отдельный параметр rooms[]
-    rooms.forEach(room => {
-        url.searchParams.append('rooms[]', room.toString());
-    });
-
-    // GET запрос (по умолчанию)
-    return fetch(url.toString(), {
+    const response = await axios.get(`${Host}/houseFloors/${id_house}`, {
+        params,
         headers: {
             'APPTOKEN': AppToken,
             'SUBDOMAIN': 'bestcon'
         }
-    }).then(res => res.json());
+    });
+
+    return response.data;
 }
 
 export async function fetchHouseFloorTotals(id_house: string, floor: string) {
-    const url = `${Host}/houseFloorTotals/${id_house}/${floor}`;
-    return fetch(url, {
+    const response = await axios.get(`${Host}/houseFloorTotals/${id_house}/${floor}`, {
         headers: {
             'APPTOKEN': AppToken,
             'SUBDOMAIN': 'bestcon'
         }
-    }).then(res => res.json());
+    });
+
+    return response.data;
 }

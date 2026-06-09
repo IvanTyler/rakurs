@@ -21,7 +21,7 @@ interface IContentMediaBlockProps {
     classNameContentMediaImages?: string;
     classNameContainer?: string;
     classNameDescSection?: string;
-    styleContext?: any;
+    styleContext?: Record<string, string>;
 }
 
 export const ContentMediaBlock: FC<IContentMediaBlockProps> = (
@@ -43,7 +43,7 @@ export const ContentMediaBlock: FC<IContentMediaBlockProps> = (
     const getIdActiveTab = (id: string) => {
         setIsAnimate(true);
 
-        setDataTabs(prev => prev.map((item: any) => {
+        setDataTabs(prev => prev.map((item: ContentTabsType) => {
             return {
                 ...item,
                 active: item.id === id,
@@ -74,7 +74,7 @@ export const ContentMediaBlock: FC<IContentMediaBlockProps> = (
 
     return (
         <section
-            className={clsx(style.contentMediaBlock, classNameSection, activeTab.name && styleContext[activeTab.name])}>
+            className={clsx(style.contentMediaBlock, classNameSection, activeTab.name && styleContext?.[activeTab.name])}>
             <ContainerSection className={clsx(style.contentMediaBlockContainer, classNameContainer)}>
 
                 {children}

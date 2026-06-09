@@ -2,20 +2,21 @@ import {FC, useState} from "react";
 import style from './Tooltip.module.scss'
 import {ListItems} from "@/src/Components/List/ListItems";
 import {TooltipItem} from "@/src/Components/UI/AccordionItem/TooltipItem";
+import {accordionItemType} from "@/src/app/types/selectionCorps";
 
 
 interface ICorpsItemProps {
     classNameTooltip?: string;
     name?: string | undefined,
-    item: any[],
+    item: accordionItemType[],
 }
 
 export const Tooltip: FC<ICorpsItemProps> = ({item, classNameTooltip}) => {
 
-    const [itemState, setItemState] = useState(item);
+    const [itemState, setItemState] = useState<accordionItemType[]>(item);
 
     const setActiveCorps = (id: string) => {
-        setItemState((prev: any) => prev.map((item: any) => ({
+        setItemState((prev: accordionItemType[]) => prev.map((item: accordionItemType) => ({
             ...item,
             active: item.id === id ? !item.active : false,
         })));
@@ -26,7 +27,7 @@ export const Tooltip: FC<ICorpsItemProps> = ({item, classNameTooltip}) => {
 
             <ListItems
                 items={itemState}
-                renderItem={(item: any) => (
+                renderItem={(item: accordionItemType) => (
                     <TooltipItem
                         claasName={classNameTooltip}
                         key={item.id}

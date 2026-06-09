@@ -9,7 +9,7 @@ import {DescSection} from "@/src/app/home/ContentMediaBlock/DescSection/DescSect
 
 interface IContentTabsItem {
     item: ContentTabsType;
-    getIdTab: (item: any) => void;
+    getIdTab: (id: string) => void;
     desc?: string;
     price?: string;
     sizeRange?: string;

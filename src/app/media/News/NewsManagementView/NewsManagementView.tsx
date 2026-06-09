@@ -16,7 +16,7 @@ interface NewsManagementViewProps {
 
 export const NewsManagementView: FC<NewsManagementViewProps> = ({ IdNews }) => {
     const [page, setPage] = useState(1);
-    const [allNews, setAllNews] = useState<NewsType[] | any[]>([]);
+    const [allNews, setAllNews] = useState<NewsType[]>([]);
     const [hasMore, setHasMore] = useState(true);
     const [totalCount, setTotalCount] = useState(0);
     const LIMIT = 16;
