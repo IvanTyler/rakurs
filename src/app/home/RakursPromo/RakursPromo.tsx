@@ -7,6 +7,7 @@ import {fetchSliderMenu} from "@/src/api/SliderMenu";
 export const RakursPromo = async () => {
     const data = await fetchSliderMenu();
     const slides = data.menu.contents.gallery.items;
+
     return (
         <section className={style.rasursPromo}>
             <ContainerSection className={style.containerRasursPromo}>
