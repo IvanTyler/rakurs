@@ -34,7 +34,7 @@
 
     &__link {
       display: grid !important;
-      grid-template-columns: minmax(auto, 228px) 1fr minmax(auto, 123px);
+      grid-template-columns: 228px 1fr 123px;
       grid-template-areas:
         'leftTop discount rightTop'
         'desc desc rightBottom';
@@ -45,24 +45,24 @@
       background-repeat: no-repeat;
 
       @media (max-width: 1800px) {
-        grid-template-columns: minmax(auto, 170px) 1fr minmax(auto, 80px);
+        grid-template-columns: 170px 1fr 80px;
       }
 
       @media (max-width: 1380px) {
-        grid-template-columns: minmax(auto, 115px) 1fr minmax(auto, 52px);
+        grid-template-columns: 115px 1fr 52px;
       }
 
       @media (max-width: 970px) {
-        grid-template-columns: minmax(auto, 94px) 1fr minmax(auto, 77px);
+        grid-template-columns: 94px 1fr 77px;
         background-image: url("../../../assets/images/first-display/rectangle-1024.svg");
       }
 
       @media (max-width: 720px) {
-        grid-template-columns: minmax(auto, 127px) 1fr minmax(auto, 67px);
+        grid-template-columns: 127px 1fr 67px;
       }
 
       @media (max-width: 450px) {
-        grid-template-columns: minmax(auto, 99px) 1fr minmax(auto, 46px);
+        grid-template-columns: 99px 1fr 46px;
       }
     }
 
@@ -73,9 +73,19 @@
     &__discount {
       grid-area: discount;
       font-family: var(--main-font);
-      font-size: clamp(12px, 1.6vw, 24px);
-      line-height: 1.1;
+      font-size: 24px;
+      line-height: 26px;
       color: var(--lightBlack);
+
+      @media (max-width: 1800px) {
+        font-size: 18px;
+        line-height: 20px;
+      }
+
+      @media (max-width: 1380px) {
+        font-size: 14px;
+        line-height: 16px;
+      }
     }
 
     &__rightTop {
@@ -87,9 +97,19 @@
       grid-column: 1 / span 2;
       align-self: end;
       font-family: var(--main-font);
-      font-size: clamp(12px, 1.6vw, 24px);
-      line-height: 1.1;
+      font-size: 24px;
+      line-height: 26px;
       color: var(--lightBlack);
+
+      @media (max-width: 1800px) {
+        font-size: 18px;
+        line-height: 20px;
+      }
+
+      @media (max-width: 1380px) {
+        font-size: 14px;
+        line-height: 16px;
+      }
     }
 
     &__rightBottom {
