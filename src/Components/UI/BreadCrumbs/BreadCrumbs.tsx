@@ -25,7 +25,7 @@ export const BreadCrumbs: FC<BreadCrumbsProps> = (
 
     const cleanPathname = pathname.replace(/\/$/, '');
     const comparePath = params.translit
-        ? decodeURIComponent(params.translit)
+        ? decodeURIComponent(Array.isArray(params.translit) ? params.translit[0] : params.translit)
         : cleanPathname;
 
     const breadCrumbsData = useMemo(() => {

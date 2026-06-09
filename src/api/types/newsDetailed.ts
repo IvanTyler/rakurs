@@ -16,7 +16,7 @@ const TagsSchema = z.object({
 const FileSchema = z.array(z.unknown());
 
 // Схема для параметров
-const ParamsSchema = z.record(z.unknown());
+const ParamsSchema = z.record(z.string(), z.unknown());
 
 // Основная схема для статьи
 export const NewsDetails = z.object({
@@ -43,6 +43,6 @@ export const NewsDetails = z.object({
 });
 
 // Типы
-export type NewsDetailsType = z.infer<typeof ArticleDetailsSchema>;
+export type NewsDetailsType = z.infer<typeof NewsDetails>;
 export type Rubric = z.infer<typeof RubricSchema>;
 export type Tags = z.infer<typeof TagsSchema>;

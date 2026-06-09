@@ -21,7 +21,7 @@ const FetchNewsInfo: FC = () => {
     const params = useParams();
 
     console.log('params', params)
-    const newsId = params.id as number;
+    const newsId = Number(params.id);
 
     const submitMutation = useMutation({
         mutationFn: () => fetchNewsInfo(newsId),
@@ -42,8 +42,8 @@ const FetchNewsInfo: FC = () => {
         },
         {
             id: uuidv4(),
-            text: dataNews?.title,
-            path: dataNews?.translit,
+            text: dataNews?.title ?? '',
+            path: dataNews?.translit ?? '',
             active: false,
         },
     ];
@@ -57,7 +57,7 @@ const FetchNewsInfo: FC = () => {
     if (submitMutation.isPending) return <Preloader />
     if (submitMutation.isError) return <p>Не удалось загрузить новость</p>
 
-    if (submitMutation.status === 'success') {
+    if (submitMutation.status === 'success' && dataNews) {
 
         const date_article = new Date(dataNews.date_article)
         const getYear = date_article.getFullYear();
