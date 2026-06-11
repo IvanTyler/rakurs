@@ -6,7 +6,6 @@ import {Pagination} from 'swiper/modules';
 import style from './SliderNews.module.scss';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import Link from "next/link";
 import {clsx} from "clsx";
 import {GalleryItemType} from "@/src/api/types/typesSliderMenu";
 
@@ -39,7 +38,7 @@ export const SliderNews: FC<ISliderApartmentDiscount> = ({
             >
                 {slides.map((slide: GalleryItemType) => (
                     <SwiperSlide className={style.sliderNews__slide} key={slide.id}>
-                        <Link className={clsx(classNameLink, style.sliderNews__link)} href={slide.link || ''}>
+                        <div className={clsx(classNameLink, style.sliderNews__link)}>
                             <div className={style.sliderNews__leftTop}></div>
                             <span className={clsx(classNameDiscount, style.sliderNews__discount)}>
                                 {decode(slide.title)}
@@ -51,7 +50,7 @@ export const SliderNews: FC<ISliderApartmentDiscount> = ({
                                 </p>
                             )}
                             <div className={style.sliderNews__rightBottom}></div>
-                        </Link>
+                        </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
