@@ -1,5 +1,4 @@
 'use client'
-
 import {FC, useState} from "react";
 import type SwiperClass from 'swiper';
 import {rubricsResponseType} from "@/src/api/types/typesRubrics";
