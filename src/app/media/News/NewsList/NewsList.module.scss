@@ -15,19 +15,20 @@
     grid-template-columns: repeat(auto-fill, calc(100% - 9px));
   }
 
-  &__slide {
-    width: calc(25% - 9px) !important;
+}
 
-    @media (max-width: 1000px) {
-      width: calc(33% - 9px) !important;
-    }
+.newsList__slide {
+  width: calc(25% - 9px) !important;
 
-    @media (max-width: 820px) {
-      width: calc(50% - 9px) !important;
-    }
+  @media (max-width: 1000px) {
+    width: calc(33% - 9px) !important;
+  }
 
-    @media (max-width: 600px) {
-      width: calc(100% - 9px) !important;
-    }
+  @media (max-width: 820px) {
+    width: calc(50% - 9px) !important;
+  }
+
+  @media (max-width: 600px) {
+    width: calc(100% - 9px) !important;
   }
 }
