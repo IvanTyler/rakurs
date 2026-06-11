@@ -22,7 +22,6 @@ export const NewsList: FC<NewsListProps> = ({news, isSlider, onSwiperReady}) => 
                 speed={500}
                 grabCursor={true}
                 onSwiper={onSwiperReady}
-                className={style.newsList}
             >
                 {news.map((slide: NewsType) => (
                     <SwiperSlide key={slide.id} className={style.newsList__slide}>
