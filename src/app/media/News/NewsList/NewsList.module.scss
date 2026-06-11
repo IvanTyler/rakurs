@@ -16,18 +16,18 @@
   }
 
   &__slide {
-    width: calc(25% - 9px);
+    width: calc(25% - 9px) !important;
 
     @media (max-width: 1000px) {
-      width: calc(33% - 9px);
+      width: calc(33% - 9px) !important;
     }
 
     @media (max-width: 820px) {
-      width: calc(50% - 9px);
+      width: calc(50% - 9px) !important;
     }
 
     @media (max-width: 600px) {
-      width: calc(100% - 9px);
+      width: calc(100% - 9px) !important;
     }
   }
 }
