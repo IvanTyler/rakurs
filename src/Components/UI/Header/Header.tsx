@@ -11,7 +11,6 @@ import favoritesIcon from '../../../assets/icons/favorites.svg';
 import {Sandwich} from "@/src/Components/UI/Sandwich/Sandwich";
 import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
 import {LinkToPage} from "@/src/Components/UI/LinkToPage/LinkToPage";
-
 export const Header: FC = () => {
 
     const [isOpenMenu, setIsOpenMenu] = useState(false);

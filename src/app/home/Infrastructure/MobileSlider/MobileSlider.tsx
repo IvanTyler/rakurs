@@ -2,7 +2,6 @@
 
 import {FC} from "react";
 import Image from "next/image";
-
 import style from './MobileSlider.module.scss';
 import imgSlide_svg from '@/public/images/infrastructure/numbering.svg';
 import {ListItems} from "@/src/Components/List/ListItems";
