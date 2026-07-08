@@ -7,6 +7,18 @@
   background-color: var(--white);
   border: 1px solid var(--lightBlack);
   padding: clamp(12px, 2vw, 24px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity var(--transitionTime), transform var(--transitionTime), visibility var(--transitionTime);
+
+  &_open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
 
   @media (max-width: 450px) {
     min-width: 0;

@@ -2,6 +2,7 @@
 
 import {FC} from "react";
 import Link from "next/link";
+import {clsx} from "clsx";
 import style from './HeaderMenu.module.scss';
 import {tabTypesUrlParamEnum} from "@/src/app/media/types/enums";
 
@@ -12,10 +13,11 @@ interface HeaderMenuProps {
 
 export const HeaderMenu: FC<HeaderMenuProps> = ({isOpen, onClose}) => {
 
-    if (!isOpen) return null;
-
     return (
-        <nav className={style.headerMenu}>
+        <nav
+            className={clsx(style.headerMenu, isOpen && style.headerMenu_open)}
+            aria-hidden={!isOpen}
+        >
             <ul className={style.headerMenu__list}>
                 <li>
                     <Link
