@@ -5,5 +5,4 @@ export enum tabTypesEnum {
 export enum tabTypesUrlParamEnum {
     news = 'news',
     construction = 'construction',
-    stock = 'stock',
 }

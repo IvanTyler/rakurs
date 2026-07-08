@@ -1,7 +1,7 @@
 'use client';
 
 
-import {FC, useEffect, useState} from "react";
+import {FC, useState} from "react";
 import style from './FloorPlans.module.scss'
 import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
 import {ContentTabsType} from "@/src/app/types/rakursConceptTabs";
@@ -10,6 +10,7 @@ import Image from "next/image";
 import {clsx} from "clsx";
 import {ContentTabs} from "@/src/Components/UI/ContentTabs/ContentTabs";
 import {LinkToPage} from "@/src/Components/UI/LinkToPage/LinkToPage";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
 export const FloorsPlans: FC = () => {
     const [dataTabs, setDataTabs] = useState<ContentTabsType[]>(dataFloorPlans);
@@ -25,25 +26,7 @@ export const FloorsPlans: FC = () => {
 
     const activeTab = dataTabs.find(tab => tab.active) || dataTabs[0];
 
-    const [widthWindowSize, setWidthWindowSize] = useState<number>(0);
-
-
-    useEffect(() => {
-        // Проверяем, что мы на клиенте
-        if (typeof window === 'undefined') return;
-
-        setWidthWindowSize(window.innerWidth);
-
-        const windowWidthSize = () => {
-            const widthWindow = window.innerWidth;
-            setWidthWindowSize(widthWindow)
-        }
-
-        window.addEventListener('resize', windowWidthSize)
-        return () => {
-            window.removeEventListener('resize', windowWidthSize)
-        }
-    }, [])
+    const {widthWindow: widthWindowSize} = useWindowWidth();
 
     const isShowDesc = widthWindowSize <= 550;
 

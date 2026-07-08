@@ -13,6 +13,7 @@ import {TerraceSilenceDesc} from "@/src/app/home/TerraceSilenceDesc/TerraceSilen
 import {MobileScrollHint} from "@/src/Components/UI/MobileScrollHint/MobileScrollHint";
 import {clsx} from "clsx";
 import {TooltipItem} from "@/src/Components/UI/AccordionItem/TooltipItem";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
 export const TerraceSilence: FC = () => {
 
@@ -29,31 +30,14 @@ export const TerraceSilence: FC = () => {
 
     const activePlace = placeTerraceSilence.find((place: accordionType) => place.active) || placeTerraceSilence[0];
 
-    const [widthWindowSize, setWidthWindowSize] = useState<number>(0);
+    const {widthWindow: widthWindowSize} = useWindowWidth();
 
     const [isScrollbar, setIsScrollbar] = useState(false);
     const setScrollbar = (isScroll: boolean) => setIsScrollbar(isScroll);
 
     useEffect(() => {
-        // Проверяем, что мы на клиенте
-        if (typeof window === 'undefined') return;
-
-        setWidthWindowSize(window.innerWidth);
-
-        const windowWidthSize = () => {
-            const widthWindow = window.innerWidth;
-            setWidthWindowSize(widthWindow)
-
-            if (widthWindow > 550) setIsScrollbar(false);
-        }
-
-        windowWidthSize()
-
-        window.addEventListener('resize', windowWidthSize)
-        return () => {
-            window.removeEventListener('resize', windowWidthSize)
-        }
-    }, [])
+        if (widthWindowSize > 550) setIsScrollbar(false);
+    }, [widthWindowSize])
 
     const isShowDesc = widthWindowSize <= 750;
 

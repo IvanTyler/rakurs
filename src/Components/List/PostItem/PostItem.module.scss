@@ -1,4 +1,4 @@
-.newsItem {
+.postItem {
   border: 1px solid transparent;
   transition: border var(--transitionTime);
   align-self: start;
@@ -6,11 +6,11 @@
   &:hover {
     border: 1px solid var(--black);
 
-    .newsItem__wrapperImg {
+    .postItem__wrapperImg {
       border: 0 solid transparent;
     }
 
-    .newsItem__link {
+    .postItem__link {
       opacity: 1;
       visibility: visible;
     }

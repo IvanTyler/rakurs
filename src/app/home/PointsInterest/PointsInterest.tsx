@@ -1,6 +1,6 @@
 'use client'
 
-import {FC, useEffect, useState} from "react";
+import {FC, useState} from "react";
 import style from './PointsInterest.module.scss';
 import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
 import {selectPointsApartmentsData} from "@/src/app/home/PointsInterest/data";
@@ -8,6 +8,7 @@ import {SelectionItem} from "@/src/Components/UI/SelectionItem/SelectionItem";
 import {selectionItemType} from "@/src/app/types/selectionCorps";
 import {MobileScrollHint} from "@/src/Components/UI/MobileScrollHint/MobileScrollHint";
 import {PointsInterestItem} from "@/src/app/home/PointsInterest/PointsInterestItem/PointsInterestItem";
+import {useWindowWidth} from "@/src/hooks/WidthWindowSize";
 
 export const PointsInterest: FC = () => {
 
@@ -23,29 +24,10 @@ export const PointsInterest: FC = () => {
     const activePoints = apartmentState.find((el: selectionItemType) => el.selected) || apartmentState[0];
 
 
-    const [widthWindowSize, setWidthWindowSize] = useState<number>(0);
+    const {widthWindow: widthWindowSize} = useWindowWidth();
 
     const [isScrollbar, setIsScrollbar] = useState(false);
     const setScrollbar = (isScroll: boolean) => setIsScrollbar(isScroll);
-
-    useEffect(() => {
-        // Проверяем, что мы на клиенте
-        if (typeof window === 'undefined') return;
-
-        setWidthWindowSize(window.innerWidth);
-
-        const windowWidthSize = () => {
-            const widthWindow = window.innerWidth;
-            setWidthWindowSize(widthWindow)
-        }
-
-        windowWidthSize()
-
-        window.addEventListener('resize', windowWidthSize)
-        return () => {
-            window.removeEventListener('resize', windowWidthSize)
-        }
-    }, [])
 
     const isMobileSelect = widthWindowSize <= 500;
 

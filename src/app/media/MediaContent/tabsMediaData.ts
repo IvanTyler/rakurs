@@ -14,10 +14,4 @@ export const tabsMediaList: tabsMediaType[] = [
         params: 'construction',
         active: false,
     },
-    {
-        id: uuidv4(),
-        text: 'Акции',
-        params: 'stock',
-        active: false,
-    },
 ]

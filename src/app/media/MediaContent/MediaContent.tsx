@@ -6,6 +6,7 @@ import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
 import {useSearchParams} from "next/navigation";
 import {tabTypesEnum, tabTypesUrlParamEnum} from "@/src/app/media/types/enums";
 import {RubricsManagementView} from "@/src/app/media/RubricsManagementView/RubricsManagementView";
+import {ConstructionDetailsView} from "@/src/app/media/ConstructionDetails/ConstructionDetailsView/ConstructionDetailsView";
 
 export const MediaContent: FC = () => {
 
@@ -18,10 +19,7 @@ export const MediaContent: FC = () => {
                 && <RubricsManagementView />
             }
             {tabTypesUrlParamEnum.construction === getTabUrlParams
-                && <div>Динамика строительства</div>
-            }
-            {tabTypesUrlParamEnum.stock === getTabUrlParams
-                && <div>Акции</div>
+                && <ConstructionDetailsView />
             }
         </section>
     )

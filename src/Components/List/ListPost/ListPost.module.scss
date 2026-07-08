@@ -1,4 +1,4 @@
-.newsList {
+.listPost {
   display: grid;
   gap: clamp(10px, 4vw, 30px) 12px;
   grid-template-columns: repeat(auto-fill, calc(25% - 9px));
@@ -17,7 +17,7 @@
 
 }
 
-.newsList__slide {
+.listPost__slide {
   width: calc(25% - 9px) !important;
 
   @media (max-width: 1000px) {
