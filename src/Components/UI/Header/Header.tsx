@@ -11,6 +11,7 @@ import favoritesIcon from '../../../assets/icons/favorites.svg';
 import {Sandwich} from "@/src/Components/UI/Sandwich/Sandwich";
 import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
 import {LinkToPage} from "@/src/Components/UI/LinkToPage/LinkToPage";
+import {HeaderMenu} from "@/src/Components/UI/Header/HeaderMenu/HeaderMenu";
 export const Header: FC = () => {
 
     const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -26,7 +27,10 @@ export const Header: FC = () => {
                 <Link className={style.header__favorites} href={'/favorites'}>
                     <Image src={favoritesIcon} alt='favorites' className={style.header__iconFavorites}/>
                 </Link>
-                <Sandwich isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu}/>
+                <div className={style.header__menuWrapper}>
+                    <Sandwich isOpenMenu={isOpenMenu} setIsOpenMenu={setIsOpenMenu}/>
+                    <HeaderMenu isOpen={isOpenMenu} onClose={() => setIsOpenMenu(false)} />
+                </div>
             </ContainerSection>
         </header>
     )

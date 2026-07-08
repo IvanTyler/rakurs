@@ -1,0 +1,40 @@
+.headerMenu {
+  position: absolute;
+  top: calc(100% + clamp(12px, 2vw, 24px));
+  right: 0;
+  z-index: 10;
+  min-width: clamp(180px, 20vw, 280px);
+  background-color: var(--white);
+  border: 1px solid var(--lightBlack);
+  padding: clamp(12px, 2vw, 24px);
+
+  @media (max-width: 450px) {
+    min-width: 0;
+    width: calc(100vw - 24px);
+    right: -12px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2vw, 20px);
+  }
+
+  &__link {
+    display: block;
+    font-family: var(--main-font);
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: clamp(16px, 2vw, 20px);
+    color: var(--lightBlack);
+    transition: opacity var(--transitionTime);
+    white-space: nowrap;
+
+    @media (max-width: 450px) {
+      white-space: normal;
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

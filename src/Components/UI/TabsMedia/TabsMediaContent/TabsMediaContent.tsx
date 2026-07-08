@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from "react";
+import {FC, useEffect} from "react";
 import {tabsMediaType} from "@/src/Components/UI/TabsMedia/type";
 import style from "@/src/Components/UI/TabsMedia/TabsMedia.module.scss";
 import {ListItems} from "@/src/Components/List/ListItems";
@@ -18,34 +18,21 @@ export const TabsMediaContent: FC<TabsMediaProps> = ({classNameTabs, dataTabs}) 
     const searchParams = useSearchParams();
 
     const activeTabFromUrl = searchParams.get(tabTypesEnum.tab) || dataTabs[0]?.params;
-    const [tabsState, setTabsState] = useState<tabsMediaType[]>(() => {
-        return dataTabs.map(tab => ({
-            ...tab,
-            active: tab.params === activeTabFromUrl,
-        }));
-    });
+
+    const tabsState: tabsMediaType[] = dataTabs.map(tab => ({
+        ...tab,
+        active: tab.params === activeTabFromUrl,
+    }));
 
     useEffect(() => {
-        const activeTab = tabsState.find(tab => tab.active);
-
-        !activeTab ?
-            setParams(activeTabFromUrl) :
-            setParams(activeTab.params);
+        if (!searchParams.get(tabTypesEnum.tab)) {
+            setParams(activeTabFromUrl);
+        }
     }, []);
 
     const setActiveTab = (id: string) => {
-        setTabsState(prev => prev.map((tab: tabsMediaType) => {
-            return {
-                ...tab,
-                active: tab.id === id,
-            }
-        }))
-
-        const activeTab = tabsState.find(tab => tab.id === id);
-
-        !activeTab ?
-            setParams(activeTabFromUrl) :
-            setParams(activeTab.params);
+        const tab = dataTabs.find(tab => tab.id === id);
+        setParams(tab ? tab.params : activeTabFromUrl);
     };
 
 

@@ -27,7 +27,7 @@ const ConstructionDetailPage: FC = () => {
 
     const albums = constructionDetails.data.blocks.content.contents.albums.albums;
     const album = albums.find(item => item.id === albumId);
-    console.log('albums', albums);
+    
     if (!album) return <p>Пост не найден</p>
 
     const otherAlbums = albums.filter(item => item.id !== albumId);
