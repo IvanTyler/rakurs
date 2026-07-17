@@ -1,4 +1,4 @@
-.contentTabs {
+:where(.contentTabs) {
   grid-area: contentTabs;
   display: flex;
   flex-direction: column;
