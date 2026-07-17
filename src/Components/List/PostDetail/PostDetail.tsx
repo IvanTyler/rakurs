@@ -7,7 +7,6 @@ import style from './PostDetail.module.scss'
 import {ContainerSection} from "@/src/Components/UI/Container/ContainerSection";
 import {BreadCrumbs} from "@/src/Components/UI/BreadCrumbs/BreadCrumbs";
 import {breadCrumbsType} from "@/src/Components/UI/BreadCrumbs/type";
-import {SetIntersectionPoint} from "@/src/app/home/SetIntersectionPoint/SetIntersectionPoint";
 
 export interface PostDetailImage {
     src: string;
@@ -54,64 +53,57 @@ export const PostDetail: FC<PostDetailProps> = (
                     </span>
                 }
 
-                {images.length > 0 &&
-                    <div className={style.postDetail__mediaWrapper}>
-                        {images.length > 1
-                            ? (
-                                <>
-                                    <Swiper
-                                        slidesPerView={1}
-                                        speed={500}
-                                        grabCursor={true}
-                                        onSwiper={setSwiper}
-                                    >
-                                        {images.map((image, index) => (
-                                            <SwiperSlide key={index}>
-                                                <img
-                                                    loading='lazy'
-                                                    src={image.src}
-                                                    alt={image.alt}
-                                                    className={style.postDetail__banner}
-                                                />
-                                            </SwiperSlide>
-                                        ))}
-                                    </Swiper>
-                                    <button
-                                        className={`${style.postDetail__sliderArrow} ${style.postDetail__sliderArrow_prev}`}
-                                        onClick={() => swiper?.slidePrev()}
-                                        aria-label="Назад"
-                                    >
-                                        <img src="/icons/arrow-black.svg" alt="" />
-                                    </button>
-                                    <button
-                                        className={`${style.postDetail__sliderArrow} ${style.postDetail__sliderArrow_next}`}
-                                        onClick={() => swiper?.slideNext()}
-                                        aria-label="Вперёд"
-                                    >
-                                        <img src="/icons/arrow-black.svg" alt="" />
-                                    </button>
-                                </>
-                            )
-                            : (
-                                <img
-                                    loading='lazy'
-                                    src={images[0].src}
-                                    alt={images[0].alt}
-                                    className={style.postDetail__banner}
-                                />
-                            )
-                        }
-                    </div>
+                {images.length > 1
+                    ? (
+                        <div className={style.postDetail__mediaWrapper}>
+                            <Swiper
+                                slidesPerView={1}
+                                speed={500}
+                                grabCursor={true}
+                                onSwiper={setSwiper}
+                            >
+                                {images.map((image, index) => (
+                                    <SwiperSlide key={index}>
+                                        <img
+                                            loading='lazy'
+                                            src={image.src}
+                                            alt={image.alt}
+                                            className={style.postDetail__banner}
+                                        />
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                            <button
+                                className={`${style.postDetail__sliderArrow} ${style.postDetail__sliderArrow_prev}`}
+                                onClick={() => swiper?.slidePrev()}
+                                aria-label="Назад"
+                            >
+                                <img src="/icons/arrow-black.svg" alt="" />
+                            </button>
+                            <button
+                                className={`${style.postDetail__sliderArrow} ${style.postDetail__sliderArrow_next}`}
+                                onClick={() => swiper?.slideNext()}
+                                aria-label="Вперёд"
+                            >
+                                <img src="/icons/arrow-black.svg" alt="" />
+                            </button>
+                        </div>
+                    )
+                    : images[0] && (
+                        <img
+                            loading='lazy'
+                            src={images[0].src}
+                            alt={images[0].alt}
+                            className={style.postDetail__banner}
+                        />
+                    )
                 }
 
                 <div className={style.postDetail__desc}>
                     {desc}
                 </div>
             </ContainerSection>
-
             {otherPosts}
-
-            <SetIntersectionPoint title="Получать самые свежие новости первым" />
         </section>
     )
 }

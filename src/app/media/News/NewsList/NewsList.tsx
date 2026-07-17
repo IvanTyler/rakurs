@@ -10,10 +10,9 @@ import {getCurrentDateInRussian} from "@/src/utils/dateInRussian";
 interface NewsListProps {
     news: NewsType[];
     isSlider?: boolean;
-    onSwiperReady?: (swiper: SwiperClass) => void;
 }
 
-export const NewsList: FC<NewsListProps> = ({news, isSlider, onSwiperReady}) => {
+export const NewsList: FC<NewsListProps> = ({news, isSlider}) => {
     return (
         <ListPost
             items={news}
@@ -28,7 +27,6 @@ export const NewsList: FC<NewsListProps> = ({news, isSlider, onSwiperReady}) => 
                 />
             )}
             isSlider={isSlider}
-            onSwiperReady={onSwiperReady}
         />
     )
 }

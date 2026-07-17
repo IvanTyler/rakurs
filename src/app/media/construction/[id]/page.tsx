@@ -16,7 +16,7 @@ const ConstructionDetailPage: FC = () => {
 
     const params = useParams();
     const albumId = Number(params.id);
-
+    
     const constructionDetails = useQuery({
         queryFn: fetchConstructionDetails,
         queryKey: ['constructionDetails']
@@ -27,7 +27,6 @@ const ConstructionDetailPage: FC = () => {
 
     const albums = constructionDetails.data.blocks.content.contents.albums.albums;
     const album = albums.find(item => item.id === albumId);
-    
     if (!album) return <p>Пост не найден</p>
 
     const otherAlbums = albums.filter(item => item.id !== albumId);
