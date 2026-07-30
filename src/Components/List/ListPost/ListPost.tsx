@@ -11,9 +11,10 @@ interface ListPostProps<T> {
     renderItem: (item: T) => ReactNode;
     getKey: (item: T) => string | number;
     isSlider?: boolean;
+    onSwiperReady?: (swiper: SwiperClass) => void;
 }
 
-export function ListPost<T>({items, renderItem, getKey, isSlider}: ListPostProps<T>) {
+export function ListPost<T>({items, renderItem, getKey, isSlider, onSwiperReady}: ListPostProps<T>) {
 
     if (isSlider) {
         return (
@@ -22,6 +23,7 @@ export function ListPost<T>({items, renderItem, getKey, isSlider}: ListPostProps
                 spaceBetween={16}
                 speed={500}
                 grabCursor={true}
+                onSwiper={onSwiperReady}
             >
                 {items.map((item) => (
                     <SwiperSlide key={getKey(item)} className={style.listPost__slide}>
