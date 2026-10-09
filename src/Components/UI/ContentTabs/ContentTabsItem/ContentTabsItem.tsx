@@ -33,8 +33,8 @@ export const ContentTabsItem: FC<IContentTabsItem> = (
         if (!elementRef.current || !item.active) return;
 
         const updateHeight = () => {
-            const height = elementRef.current!.scrollHeight;
-            setContentHeight(height);
+            if (!elementRef.current) return;
+            setContentHeight(elementRef.current.scrollHeight);
         };
 
         updateHeight();
@@ -44,7 +44,7 @@ export const ContentTabsItem: FC<IContentTabsItem> = (
         return () => {
             window.removeEventListener('resize', updateHeight);
         };
-    }, [item.active]); // Следим за изменением active
+    }, [item.active, isShowDesc]); // Следим за изменением active
 
     const countSlides = item.images.length
 

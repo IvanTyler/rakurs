@@ -30,8 +30,8 @@ export const TabsAccordionItem: FC<TabsAccordionItem> = (
         if (!elementRef.current || !item.active) return;
 
         const updateHeight = () => {
-            const height = elementRef.current!.scrollHeight;
-            setContentHeight(height);
+            if (!elementRef.current) return;
+            setContentHeight(elementRef.current.scrollHeight);
         };
 
         updateHeight();

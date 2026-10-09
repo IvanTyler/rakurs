@@ -11,15 +11,15 @@
 
     @media (max-width: 630px) {
       grid-template-areas:
-      'title'
-      'form';
+        'title'
+        'form';
       grid-template-columns: 1fr;
     }
   }
 
   &__title {
     grid-area: title;
-    color:var(--green-light);
+    color: var(--green-light);
     font-size: clamp(28px, 4vw, 72px);
     line-height: clamp(30px, 3vw, 72px);
 

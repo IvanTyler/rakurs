@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m ' *)",
+      "Bash(tasklist)",
+      "Bash(rm .git/index.lock *)",
+      "Bash(git commit *)"
+    ],
+    "additionalDirectories": [
+      "C:\\IvanTyler\\rakurs\\.git"
+    ]
+  }
+}

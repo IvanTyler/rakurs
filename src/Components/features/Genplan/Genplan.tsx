@@ -103,7 +103,12 @@ export const Genplan: FC = () => {
 
     const floorData = useMemo(() => {
         if (!selectedCorps || !GenplanData.data) return null;
-        return GenplanData.data.blocks.select_floor.contents[selectedCorps].value;
+        const value = GenplanData.data.blocks.select_floor.contents[selectedCorps]?.value;
+        if (!value || typeof value !== 'object') return null;
+
+        // Бэкенд может отдать points объектом вместо массива
+        const points = Array.isArray(value.points) ? value.points : Object.values(value.points ?? {});
+        return {...value, points};
     }, [selectedCorps, GenplanData.data]);
 
     const houseFloorsData = useQuery({
@@ -118,8 +123,8 @@ export const Genplan: FC = () => {
 
 
     const isFloorsData = () => {
-        if (selectedCorps) {
-            return floorData.points?.filter((point: pointsType) => Boolean(point)).length
+        if (selectedCorps && floorData) {
+            return floorData.points.filter((point: pointsType) => Boolean(point)).length
         }
     }
     const countFloors = isFloorsData();
