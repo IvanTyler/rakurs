@@ -1,1 +1,1 @@
-export const AppToken = "e66a54282eb3dfcb12383577c08fe6c4";
+export const AppToken = process.env.NEXT_PUBLIC_APP_TOKEN ?? '';

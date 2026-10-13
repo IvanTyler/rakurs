@@ -26,6 +26,9 @@ export const SliderNews: FC<ISliderApartmentDiscount> = ({
     classNameDesc,
     classNameDiscount,
 }) => {
+
+    console.log('SliderNews slides:', slides); // Log the slides for debugging
+
     return (
         <div className={clsx(style.sliderContainer, classNameSlideContainer)}>
             <Swiper
